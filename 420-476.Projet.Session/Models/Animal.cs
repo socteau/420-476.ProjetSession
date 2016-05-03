@@ -20,6 +20,7 @@ namespace _420_476.Projet.Session.Models
         public string Race { get; set; }
         public Nullable<int> Age { get; set; }
         public string Besoins { get; set; }
+        public string Etat { get; set; }
     
         public virtual Membre Membre { get; set; }
     }

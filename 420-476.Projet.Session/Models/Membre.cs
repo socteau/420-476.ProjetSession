@@ -18,20 +18,19 @@ namespace _420_476.Projet.Session.Models
         public Membre()
         {
             this.Animals = new HashSet<Animal>();
-            this.Ratings = new HashSet<Rating>();
+            this.ServicesRatings = new HashSet<ServicesRating>();
         }
     
         public int UserID { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Address { get; set; }
-        public decimal AverageRating { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Animal> Animals { get; set; }
         public virtual User User { get; set; }
         public virtual Offrant Offrant { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Rating> Ratings { get; set; }
+        public virtual ICollection<ServicesRating> ServicesRatings { get; set; }
     }
 }

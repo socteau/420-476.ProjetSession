@@ -14,6 +14,12 @@ namespace _420_476.Projet.Session.Models
     
     public partial class Service
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Service()
+        {
+            this.ServicesRatings = new HashSet<ServicesRating>();
+        }
+    
         public int ID { get; set; }
         public int OffrantID { get; set; }
         public string Label { get; set; }
@@ -21,5 +27,7 @@ namespace _420_476.Projet.Session.Models
         public decimal Prix { get; set; }
     
         public virtual Offrant Offrant { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ServicesRating> ServicesRatings { get; set; }
     }
 }
