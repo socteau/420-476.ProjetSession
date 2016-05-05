@@ -111,3 +111,6 @@ C:\Users\mark_\OneDrive\Documents\420-476.ProjetSession\420-476.Projet.Session\b
 C:\Users\mark_\OneDrive\Documents\420-476.ProjetSession\420-476.Projet.Session\bin\Antlr3.Runtime.pdb
 C:\Users\mark_\OneDrive\Documents\420-476.ProjetSession\420-476.Projet.Session\obj\Debug\420-476.Projet.Session.dll
 C:\Users\mark_\OneDrive\Documents\420-476.ProjetSession\420-476.Projet.Session\obj\Debug\420-476.Projet.Session.pdb
+D:\Prog\Devoirs\420-476.Projet.Pet_Care\420-476.Projet.Session\obj\Debug\420-476.Projet.Session.csprojResolveAssemblyReference.cache
+D:\Prog\Devoirs\420-476.Projet.Pet_Care\420-476.Projet.Session\obj\Debug\420-476.Projet.Session.dll
+D:\Prog\Devoirs\420-476.Projet.Pet_Care\420-476.Projet.Session\obj\Debug\420-476.Projet.Session.pdb
