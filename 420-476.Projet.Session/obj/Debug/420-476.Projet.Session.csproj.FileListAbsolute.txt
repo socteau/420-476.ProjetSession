@@ -58,6 +58,5 @@ D:\Users\0645637\Documents\Session\420-476.Projet.Session\bin\System.Web.WebPage
 D:\Users\0645637\Documents\Session\420-476.Projet.Session\bin\System.Web.WebPages.Deployment.xml
 D:\Users\0645637\Documents\Session\420-476.Projet.Session\bin\System.Web.WebPages.Razor.xml
 D:\Users\0645637\Documents\Session\420-476.Projet.Session\bin\Antlr3.Runtime.pdb
-D:\Users\0645637\Documents\Session\420-476.Projet.Session\obj\Debug\420-476.Projet.Session.csprojResolveAssemblyReference.cache
 D:\Users\0645637\Documents\Session\420-476.Projet.Session\obj\Debug\420-476.Projet.Session.dll
 D:\Users\0645637\Documents\Session\420-476.Projet.Session\obj\Debug\420-476.Projet.Session.pdb
