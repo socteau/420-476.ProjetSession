@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 C:\Users\mark_\OneDrive\Documents\420-476.ProjetSession\420-476.Projet.Session\bin\ApplicationInsights.config
 C:\Users\mark_\OneDrive\Documents\420-476.ProjetSession\420-476.Projet.Session\bin\roslyn\csc.exe
 C:\Users\mark_\OneDrive\Documents\420-476.ProjetSession\420-476.Projet.Session\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
@@ -62,6 +63,8 @@ C:\Users\mark_\OneDrive\Documents\420-476.ProjetSession\420-476.Projet.Session\b
 C:\Users\mark_\OneDrive\Documents\420-476.ProjetSession\420-476.Projet.Session\obj\Debug\420-476.Projet.Session.dll
 C:\Users\mark_\OneDrive\Documents\420-476.ProjetSession\420-476.Projet.Session\obj\Debug\420-476.Projet.Session.pdb
 =======
+=======
+>>>>>>> 89919060d4ee757952b5eac33139f18b2d0e7c1f
 D:\Users\0645637\Documents\Session\420-476.Projet.Session\bin\ApplicationInsights.config
 D:\Users\0645637\Documents\Session\420-476.Projet.Session\bin\roslyn\csc.exe
 D:\Users\0645637\Documents\Session\420-476.Projet.Session\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
@@ -124,4 +127,8 @@ D:\Users\0645637\Documents\Session\420-476.Projet.Session\bin\System.Web.WebPage
 D:\Users\0645637\Documents\Session\420-476.Projet.Session\bin\Antlr3.Runtime.pdb
 D:\Users\0645637\Documents\Session\420-476.Projet.Session\obj\Debug\420-476.Projet.Session.dll
 D:\Users\0645637\Documents\Session\420-476.Projet.Session\obj\Debug\420-476.Projet.Session.pdb
+<<<<<<< HEAD
 >>>>>>> parent of 9a78aab... COMMIT over 9000
+=======
+D:\Users\0645637\Documents\Session\420-476.Projet.Session\obj\Debug\420-476.Projet.Session.csprojResolveAssemblyReference.cache
+>>>>>>> 89919060d4ee757952b5eac33139f18b2d0e7c1f
