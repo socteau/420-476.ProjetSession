@@ -1,0 +1,58 @@
+﻿@model _420_476.Projet.Session.Models.ServicesRating
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>ServicesRating</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Note)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Note)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Text)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Text)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Membre.FirstName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Membre.FirstName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Offrant.Region)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Offrant.Region)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Service.Label)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Service.Label)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
