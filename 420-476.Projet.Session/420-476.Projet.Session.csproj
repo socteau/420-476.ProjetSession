@@ -173,19 +173,11 @@
     <Compile Include="Controllers\AnimalsController.cs" />
     <Compile Include="Controllers\GestionController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-<<<<<<< HEAD
-<<<<<<< HEAD
     <Compile Include="Controllers\MembresController.cs" />
     <Compile Include="Controllers\MessagesController.cs" />
     <Compile Include="Controllers\ServicesController.cs" />
     <Compile Include="Controllers\ServicesRatingsController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
-=======
-    <Compile Include="Controllers\MessagingController.cs" />
-=======
->>>>>>> dc7c640194bb8254ce63c7e7c5330bc65335c260
-    <Compile Include="Controllers\ServicesController.cs" />
->>>>>>> 5f2ec609660ef853663574f7019cc37a825017ee
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -330,21 +322,17 @@
     <Content Include="Views\Animals\Details.cshtml" />
     <Content Include="Views\Animals\Edit.cshtml" />
     <Content Include="Views\Animals\Index.cshtml" />
-<<<<<<< HEAD
     <Content Include="Views\Membres\Create.cshtml" />
     <Content Include="Views\Membres\Delete.cshtml" />
     <Content Include="Views\Membres\Details.cshtml" />
     <Content Include="Views\Membres\Edit.cshtml" />
     <Content Include="Views\Membres\Index.cshtml" />
-=======
     <Content Include="Views\Shared\writeMessage.cshtml" />
->>>>>>> 5f2ec609660ef853663574f7019cc37a825017ee
     <Content Include="Views\Services\Create.cshtml" />
     <Content Include="Views\Services\Delete.cshtml" />
     <Content Include="Views\Services\Details.cshtml" />
     <Content Include="Views\Services\Edit.cshtml" />
     <Content Include="Views\Services\Index.cshtml" />
-<<<<<<< HEAD
     <Content Include="Views\Messages\Create.cshtml" />
     <Content Include="Views\Messages\Delete.cshtml" />
     <Content Include="Views\Messages\Details.cshtml" />
@@ -367,8 +355,6 @@
     <Content Include="Views\ServicesRatings\Details.cshtml" />
     <Content Include="Views\ServicesRatings\Edit.cshtml" />
     <Content Include="Views\ServicesRatings\Index.cshtml" />
-=======
->>>>>>> 5f2ec609660ef853663574f7019cc37a825017ee
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
