@@ -28,9 +28,9 @@ namespace _420_476.Projet.Session.Models
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Animal> Animals { get; set; }
-        public virtual User User { get; set; }
         public virtual Offrant Offrant { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ServicesRating> ServicesRatings { get; set; }
+        public virtual User User { get; set; }
     }
 }

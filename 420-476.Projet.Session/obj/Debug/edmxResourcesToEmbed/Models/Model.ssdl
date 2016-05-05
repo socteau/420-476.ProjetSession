@@ -31,7 +31,7 @@
     <Property Name="Sujet" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="Texte" Type="varchar(max)" Nullable="false" />
     <Property Name="DateEnvoie" Type="datetime" Nullable="false" />
-    <Property Name="Statut_lu" Type="binary" MaxLength="1" Nullable="false" />
+    <Property Name="Statut_lu" Type="bit" Nullable="false" />
   </EntityType>
   <EntityType Name="Offrant">
     <Key>
@@ -77,7 +77,7 @@
     <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="RoleID" Type="int" Nullable="false" />
     <Property Name="Login" Type="varchar" MaxLength="50" Nullable="false" />
-    <Property Name="Statut_disponible" Type="binary" MaxLength="1" Nullable="false" />
+    <Property Name="Statut_disponible" Type="bit" Nullable="false" />
   </EntityType>
   <Association Name="FK_Animal_Membre">
     <End Role="Membre" Type="Self.Membre" Multiplicity="1" />
