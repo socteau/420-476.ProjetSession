@@ -1,14 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-<<<<<<< HEAD
-  <EntityContainerMapping StorageEntityContainer="Pet_CareModelStoreContainer" CdmEntityContainer="Pet_CareEntities">
-    <EntitySetMapping Name="Animals">
-      <EntityTypeMapping TypeName="Pet_CareModel.Animal">
-=======
   <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="Pet_CareEntities">
     <EntitySetMapping Name="Animals">
       <EntityTypeMapping TypeName="Model.Animal">
->>>>>>> dc7c640194bb8254ce63c7e7c5330bc65335c260
         <MappingFragment StoreEntitySet="Animal">
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="MembreID" ColumnName="MembreID" />
@@ -16,77 +10,31 @@
           <ScalarProperty Name="Race" ColumnName="Race" />
           <ScalarProperty Name="Age" ColumnName="Age" />
           <ScalarProperty Name="Besoins" ColumnName="Besoins" />
-<<<<<<< HEAD
-=======
           <ScalarProperty Name="Etat" ColumnName="Etat" />
->>>>>>> dc7c640194bb8254ce63c7e7c5330bc65335c260
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Membres">
-<<<<<<< HEAD
-      <EntityTypeMapping TypeName="Pet_CareModel.Membre">
-=======
       <EntityTypeMapping TypeName="Model.Membre">
->>>>>>> dc7c640194bb8254ce63c7e7c5330bc65335c260
         <MappingFragment StoreEntitySet="Membre">
           <ScalarProperty Name="UserID" ColumnName="UserID" />
           <ScalarProperty Name="FirstName" ColumnName="FirstName" />
           <ScalarProperty Name="LastName" ColumnName="LastName" />
           <ScalarProperty Name="Address" ColumnName="Address" />
-<<<<<<< HEAD
-          <ScalarProperty Name="AverageRating" ColumnName="AverageRating" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Messages">
-      <EntityTypeMapping TypeName="Pet_CareModel.Message">
-        <MappingFragment StoreEntitySet="Message">
-          <ScalarProperty Name="ID" ColumnName="ID" />
-          <ScalarProperty Name="FromUserID" ColumnName="FromUserID" />
-          <ScalarProperty Name="ToUserID" ColumnName="ToUserID" />
-          <ScalarProperty Name="Sujet" ColumnName="Sujet" />
-          <ScalarProperty Name="Texte" ColumnName="Texte" />
-          <ScalarProperty Name="DateEnvoie" ColumnName="DateEnvoie" />
-          <ScalarProperty Name="Statut_lu" ColumnName="Statut_lu" />
-=======
->>>>>>> dc7c640194bb8254ce63c7e7c5330bc65335c260
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Offrants">
-<<<<<<< HEAD
-      <EntityTypeMapping TypeName="Pet_CareModel.Offrant">
-        <MappingFragment StoreEntitySet="Offrant">
-          <ScalarProperty Name="MembreID" ColumnName="MembreID" />
-          <ScalarProperty Name="Region" ColumnName="Region" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Ratings">
-      <EntityTypeMapping TypeName="Pet_CareModel.Rating">
-        <MappingFragment StoreEntitySet="Ratings">
-          <ScalarProperty Name="ID" ColumnName="ID" />
-          <ScalarProperty Name="MembreID" ColumnName="MembreID" />
-          <ScalarProperty Name="OffrantID" ColumnName="OffrantID" />
-          <ScalarProperty Name="Note" ColumnName="Note" />
-          <ScalarProperty Name="Text" ColumnName="Text" />
-=======
       <EntityTypeMapping TypeName="Model.Offrant">
         <MappingFragment StoreEntitySet="Offrant">
           <ScalarProperty Name="MembreID" ColumnName="MembreID" />
           <ScalarProperty Name="Region" ColumnName="Region" />
           <ScalarProperty Name="AverageRating" ColumnName="AverageRating" />
->>>>>>> dc7c640194bb8254ce63c7e7c5330bc65335c260
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Roles">
-<<<<<<< HEAD
-      <EntityTypeMapping TypeName="Pet_CareModel.Role">
-=======
       <EntityTypeMapping TypeName="Model.Role">
->>>>>>> dc7c640194bb8254ce63c7e7c5330bc65335c260
         <MappingFragment StoreEntitySet="Roles">
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="Label" ColumnName="Label" />
@@ -95,11 +43,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Services">
-<<<<<<< HEAD
-      <EntityTypeMapping TypeName="Pet_CareModel.Service">
-=======
       <EntityTypeMapping TypeName="Model.Service">
->>>>>>> dc7c640194bb8254ce63c7e7c5330bc65335c260
         <MappingFragment StoreEntitySet="Services">
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="OffrantID" ColumnName="OffrantID" />
@@ -109,15 +53,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-<<<<<<< HEAD
-    <EntitySetMapping Name="Users">
-      <EntityTypeMapping TypeName="Pet_CareModel.User">
-        <MappingFragment StoreEntitySet="User">
-          <ScalarProperty Name="ID" ColumnName="ID" />
-          <ScalarProperty Name="RoleID" ColumnName="RoleID" />
-          <ScalarProperty Name="Login" ColumnName="Login" />
-          <ScalarProperty Name="Statut_disponible" ColumnName="Statut_disponible" />
-=======
     <EntitySetMapping Name="ServicesRatings">
       <EntityTypeMapping TypeName="Model.ServicesRating">
         <MappingFragment StoreEntitySet="ServicesRatings">
@@ -150,7 +85,6 @@
           <ScalarProperty Name="Login" ColumnName="Login" />
           <ScalarProperty Name="RoleID" ColumnName="RoleID" />
           <ScalarProperty Name="ID" ColumnName="ID" />
->>>>>>> dc7c640194bb8254ce63c7e7c5330bc65335c260
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
