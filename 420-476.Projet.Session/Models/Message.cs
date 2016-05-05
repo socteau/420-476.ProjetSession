@@ -6,7 +6,7 @@
 //     Manual changes to this file will be overwritten if the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-//test
+
 namespace _420_476.Projet.Session.Models
 {
     using System;
@@ -20,7 +20,7 @@ namespace _420_476.Projet.Session.Models
         public string Sujet { get; set; }
         public string Texte { get; set; }
         public System.DateTime DateEnvoie { get; set; }
-        public byte[] Statut_lu { get; set; }
+        public bool Statut_lu { get; set; }
     
         public virtual User User { get; set; }
         public virtual User User1 { get; set; }

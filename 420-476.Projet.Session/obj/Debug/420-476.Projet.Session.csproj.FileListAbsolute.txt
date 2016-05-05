@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 D:\Prog\Devoirs\420-476.Projet.Session\420-476.Projet.Session\bin\ApplicationInsights.config
 D:\Prog\Devoirs\420-476.Projet.Session\420-476.Projet.Session\bin\roslyn\csc.exe
 D:\Prog\Devoirs\420-476.Projet.Session\420-476.Projet.Session\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
@@ -126,6 +127,8 @@ C:\Users\mark_\OneDrive\Documents\420-476.ProjetSession\420-476.Projet.Session\b
 C:\Users\mark_\OneDrive\Documents\420-476.ProjetSession\420-476.Projet.Session\bin\System.Web.Http.WebHost.xml
 =======
 >>>>>>> 9f4e4dd37752d831ff84732defb772238a21d153
+=======
+>>>>>>> dc7c640194bb8254ce63c7e7c5330bc65335c260
 D:\Prog\Devoirs\420-476.Projet.Pet_Care\420-476.Projet.Session\bin\ApplicationInsights.config
 D:\Prog\Devoirs\420-476.Projet.Pet_Care\420-476.Projet.Session\bin\roslyn\csc.exe
 D:\Prog\Devoirs\420-476.Projet.Pet_Care\420-476.Projet.Session\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
@@ -180,4 +183,9 @@ D:\Prog\Devoirs\420-476.Projet.Pet_Care\420-476.Projet.Session\bin\System.Web.We
 D:\Prog\Devoirs\420-476.Projet.Pet_Care\420-476.Projet.Session\bin\System.Web.WebPages.Deployment.xml
 D:\Prog\Devoirs\420-476.Projet.Pet_Care\420-476.Projet.Session\bin\System.Web.WebPages.Razor.xml
 D:\Prog\Devoirs\420-476.Projet.Pet_Care\420-476.Projet.Session\bin\Antlr3.Runtime.pdb
+<<<<<<< HEAD
 >>>>>>> 5f2ec609660ef853663574f7019cc37a825017ee
+=======
+D:\Prog\Devoirs\420-476.Projet.Pet_Care\420-476.Projet.Session\obj\Debug\420-476.Projet.Session.dll
+D:\Prog\Devoirs\420-476.Projet.Pet_Care\420-476.Projet.Session\obj\Debug\420-476.Projet.Session.pdb
+>>>>>>> dc7c640194bb8254ce63c7e7c5330bc65335c260

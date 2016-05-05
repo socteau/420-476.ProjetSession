@@ -24,19 +24,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Messages">
-      <EntityTypeMapping TypeName="Model.Message">
-        <MappingFragment StoreEntitySet="Message">
-          <ScalarProperty Name="ID" ColumnName="ID" />
-          <ScalarProperty Name="FromUserID" ColumnName="FromUserID" />
-          <ScalarProperty Name="ToUserID" ColumnName="ToUserID" />
-          <ScalarProperty Name="Sujet" ColumnName="Sujet" />
-          <ScalarProperty Name="Texte" ColumnName="Texte" />
-          <ScalarProperty Name="DateEnvoie" ColumnName="DateEnvoie" />
-          <ScalarProperty Name="Statut_lu" ColumnName="Statut_lu" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="Offrants">
       <EntityTypeMapping TypeName="Model.Offrant">
         <MappingFragment StoreEntitySet="Offrant">
@@ -78,13 +65,26 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="Messages">
+      <EntityTypeMapping TypeName="Model.Message">
+        <MappingFragment StoreEntitySet="Message">
+          <ScalarProperty Name="Statut_lu" ColumnName="Statut_lu" />
+          <ScalarProperty Name="DateEnvoie" ColumnName="DateEnvoie" />
+          <ScalarProperty Name="Texte" ColumnName="Texte" />
+          <ScalarProperty Name="Sujet" ColumnName="Sujet" />
+          <ScalarProperty Name="ToUserID" ColumnName="ToUserID" />
+          <ScalarProperty Name="FromUserID" ColumnName="FromUserID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="Users">
       <EntityTypeMapping TypeName="Model.User">
         <MappingFragment StoreEntitySet="User">
-          <ScalarProperty Name="ID" ColumnName="ID" />
-          <ScalarProperty Name="RoleID" ColumnName="RoleID" />
-          <ScalarProperty Name="Login" ColumnName="Login" />
           <ScalarProperty Name="Statut_disponible" ColumnName="Statut_disponible" />
+          <ScalarProperty Name="Login" ColumnName="Login" />
+          <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Animal">
           <Key>
             <PropertyRef Name="ID" />
@@ -36,7 +36,7 @@
           <Property Name="Sujet" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Texte" Type="varchar(max)" Nullable="false" />
           <Property Name="DateEnvoie" Type="datetime" Nullable="false" />
-          <Property Name="Statut_lu" Type="binary" MaxLength="1" Nullable="false" />
+          <Property Name="Statut_lu" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="Offrant">
           <Key>
@@ -82,7 +82,7 @@
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="RoleID" Type="int" Nullable="false" />
           <Property Name="Login" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="Statut_disponible" Type="binary" MaxLength="1" Nullable="false" />
+          <Property Name="Statut_disponible" Type="bit" Nullable="false" />
         </EntityType>
         <Association Name="FK_Animal_Membre">
           <End Role="Membre" Type="Self.Membre" Multiplicity="1" />
@@ -254,8 +254,7 @@
             <End Role="User" EntitySet="User" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -281,23 +280,9 @@
           <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Address" Type="String" MaxLength="75" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="Animals" Relationship="Self.FK_Animal_Membre" FromRole="Membre" ToRole="Animal" />
-          <NavigationProperty Name="User" Relationship="Self.FK_Membre_User" FromRole="Membre" ToRole="User" />
           <NavigationProperty Name="Offrant" Relationship="Self.FK_Offrant_Membre" FromRole="Membre" ToRole="Offrant" />
           <NavigationProperty Name="ServicesRatings" Relationship="Self.FK_ServicesRatings_Membre" FromRole="Membre" ToRole="ServicesRatings" />
-        </EntityType>
-        <EntityType Name="Message">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="FromUserID" Type="Int32" Nullable="false" />
-          <Property Name="ToUserID" Type="Int32" Nullable="false" />
-          <Property Name="Sujet" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Texte" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="DateEnvoie" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="Statut_lu" Type="Binary" MaxLength="1" FixedLength="true" Nullable="false" />
-          <NavigationProperty Name="User" Relationship="Self.FK_Message_User" FromRole="Message" ToRole="User" />
-          <NavigationProperty Name="User1" Relationship="Self.FK_Message_User1" FromRole="Message" ToRole="User" />
+          <NavigationProperty Name="User" Relationship="Model.FK_Membre_User" FromRole="Membre" ToRole="User" />
         </EntityType>
         <EntityType Name="Offrant">
           <Key>
@@ -317,7 +302,7 @@
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Label" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="Users" Relationship="Self.FK_User_Roles" FromRole="Roles" ToRole="User" />
+          <NavigationProperty Name="Users" Relationship="Model.FK_User_Roles" FromRole="Role" ToRole="User" />
         </EntityType>
         <EntityType Name="Service">
           <Key>
@@ -345,19 +330,6 @@
           <NavigationProperty Name="Offrant" Relationship="Self.FK_ServicesRatings_Offrant" FromRole="ServicesRatings" ToRole="Offrant" />
           <NavigationProperty Name="Service" Relationship="Self.FK_ServicesRatings_Services" FromRole="ServicesRatings" ToRole="Services" />
         </EntityType>
-        <EntityType Name="User">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="RoleID" Type="Int32" Nullable="false" />
-          <Property Name="Login" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Statut_disponible" Type="Binary" MaxLength="1" FixedLength="true" Nullable="false" />
-          <NavigationProperty Name="Membre" Relationship="Self.FK_Membre_User" FromRole="User" ToRole="Membre" />
-          <NavigationProperty Name="Messages" Relationship="Self.FK_Message_User" FromRole="User" ToRole="Message" />
-          <NavigationProperty Name="Messages1" Relationship="Self.FK_Message_User1" FromRole="User" ToRole="Message" />
-          <NavigationProperty Name="Role" Relationship="Self.FK_User_Roles" FromRole="User" ToRole="Roles" />
-        </EntityType>
         <Association Name="FK_Animal_Membre">
           <End Role="Membre" Type="Self.Membre" Multiplicity="1" />
           <End Role="Animal" Type="Self.Animal" Multiplicity="*" />
@@ -367,18 +339,6 @@
             </Principal>
             <Dependent Role="Animal">
               <PropertyRef Name="MembreID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Membre_User">
-          <End Role="User" Type="Self.User" Multiplicity="1" />
-          <End Role="Membre" Type="Self.Membre" Multiplicity="0..1" />
-          <ReferentialConstraint>
-            <Principal Role="User">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="Membre">
-              <PropertyRef Name="UserID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -406,30 +366,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Message_User">
-          <End Role="User" Type="Self.User" Multiplicity="1" />
-          <End Role="Message" Type="Self.Message" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="User">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="Message">
-              <PropertyRef Name="FromUserID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Message_User1">
-          <End Role="User" Type="Self.User" Multiplicity="1" />
-          <End Role="Message" Type="Self.Message" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="User">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="Message">
-              <PropertyRef Name="ToUserID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Services_Offrant">
           <End Role="Offrant" Type="Self.Offrant" Multiplicity="1" />
           <End Role="Services" Type="Self.Service" Multiplicity="*" />
@@ -454,18 +390,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_User_Roles">
-          <End Role="Roles" Type="Self.Role" Multiplicity="1" />
-          <End Role="User" Type="Self.User" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Roles">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="User">
-              <PropertyRef Name="RoleID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_ServicesRatings_Services">
           <End Role="Services" Type="Self.Service" Multiplicity="1" />
           <End Role="ServicesRatings" Type="Self.ServicesRating" Multiplicity="*" />
@@ -481,19 +405,13 @@
         <EntityContainer Name="Pet_CareEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Animals" EntityType="Self.Animal" />
           <EntitySet Name="Membres" EntityType="Self.Membre" />
-          <EntitySet Name="Messages" EntityType="Self.Message" />
           <EntitySet Name="Offrants" EntityType="Self.Offrant" />
           <EntitySet Name="Roles" EntityType="Self.Role" />
           <EntitySet Name="Services" EntityType="Self.Service" />
           <EntitySet Name="ServicesRatings" EntityType="Self.ServicesRating" />
-          <EntitySet Name="Users" EntityType="Self.User" />
           <AssociationSet Name="FK_Animal_Membre" Association="Self.FK_Animal_Membre">
             <End Role="Membre" EntitySet="Membres" />
             <End Role="Animal" EntitySet="Animals" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Membre_User" Association="Self.FK_Membre_User">
-            <End Role="User" EntitySet="Users" />
-            <End Role="Membre" EntitySet="Membres" />
           </AssociationSet>
           <AssociationSet Name="FK_Offrant_Membre" Association="Self.FK_Offrant_Membre">
             <End Role="Membre" EntitySet="Membres" />
@@ -503,14 +421,6 @@
             <End Role="Membre" EntitySet="Membres" />
             <End Role="ServicesRatings" EntitySet="ServicesRatings" />
           </AssociationSet>
-          <AssociationSet Name="FK_Message_User" Association="Self.FK_Message_User">
-            <End Role="User" EntitySet="Users" />
-            <End Role="Message" EntitySet="Messages" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Message_User1" Association="Self.FK_Message_User1">
-            <End Role="User" EntitySet="Users" />
-            <End Role="Message" EntitySet="Messages" />
-          </AssociationSet>
           <AssociationSet Name="FK_Services_Offrant" Association="Self.FK_Services_Offrant">
             <End Role="Offrant" EntitySet="Offrants" />
             <End Role="Services" EntitySet="Services" />
@@ -519,15 +429,104 @@
             <End Role="Offrant" EntitySet="Offrants" />
             <End Role="ServicesRatings" EntitySet="ServicesRatings" />
           </AssociationSet>
-          <AssociationSet Name="FK_User_Roles" Association="Self.FK_User_Roles">
-            <End Role="Roles" EntitySet="Roles" />
-            <End Role="User" EntitySet="Users" />
-          </AssociationSet>
           <AssociationSet Name="FK_ServicesRatings_Services" Association="Self.FK_ServicesRatings_Services">
             <End Role="Services" EntitySet="Services" />
             <End Role="ServicesRatings" EntitySet="ServicesRatings" />
           </AssociationSet>
+          <EntitySet Name="Messages" EntityType="Model.Message" />
+          <EntitySet Name="Users" EntityType="Model.User" />
+          <AssociationSet Name="FK_Membre_User" Association="Model.FK_Membre_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Membre" EntitySet="Membres" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Message_User" Association="Model.FK_Message_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Message" EntitySet="Messages" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Message_User1" Association="Model.FK_Message_User1">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Message" EntitySet="Messages" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Roles" Association="Model.FK_User_Roles">
+            <End Role="Role" EntitySet="Roles" />
+            <End Role="User" EntitySet="Users" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="Message">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FromUserID" Type="Int32" Nullable="false" />
+          <Property Name="ToUserID" Type="Int32" Nullable="false" />
+          <Property Name="Sujet" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Texte" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="DateEnvoie" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Statut_lu" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="User" Relationship="Model.FK_Message_User" FromRole="Message" ToRole="User" />
+          <NavigationProperty Name="User1" Relationship="Model.FK_Message_User1" FromRole="Message" ToRole="User" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RoleID" Type="Int32" Nullable="false" />
+          <Property Name="Login" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Statut_disponible" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Membre" Relationship="Model.FK_Membre_User" FromRole="User" ToRole="Membre" />
+          <NavigationProperty Name="Messages" Relationship="Model.FK_Message_User" FromRole="User" ToRole="Message" />
+          <NavigationProperty Name="Messages1" Relationship="Model.FK_Message_User1" FromRole="User" ToRole="Message" />
+          <NavigationProperty Name="Role" Relationship="Model.FK_User_Roles" FromRole="User" ToRole="Role" />
+        </EntityType>
+        <Association Name="FK_Membre_User">
+          <End Type="Model.User" Role="User" Multiplicity="1" />
+          <End Type="Model.Membre" Role="Membre" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Membre">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Message_User">
+          <End Type="Model.User" Role="User" Multiplicity="1" />
+          <End Type="Model.Message" Role="Message" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Message">
+              <PropertyRef Name="FromUserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Message_User1">
+          <End Type="Model.User" Role="User" Multiplicity="1" />
+          <End Type="Model.Message" Role="Message" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Message">
+              <PropertyRef Name="ToUserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Roles">
+          <End Type="Model.Role" Role="Role" Multiplicity="1" />
+          <End Type="Model.User" Role="User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="RoleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -554,19 +553,6 @@
                 <ScalarProperty Name="FirstName" ColumnName="FirstName" />
                 <ScalarProperty Name="LastName" ColumnName="LastName" />
                 <ScalarProperty Name="Address" ColumnName="Address" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Messages">
-            <EntityTypeMapping TypeName="Model.Message">
-              <MappingFragment StoreEntitySet="Message">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="FromUserID" ColumnName="FromUserID" />
-                <ScalarProperty Name="ToUserID" ColumnName="ToUserID" />
-                <ScalarProperty Name="Sujet" ColumnName="Sujet" />
-                <ScalarProperty Name="Texte" ColumnName="Texte" />
-                <ScalarProperty Name="DateEnvoie" ColumnName="DateEnvoie" />
-                <ScalarProperty Name="Statut_lu" ColumnName="Statut_lu" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -611,13 +597,26 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Messages">
+            <EntityTypeMapping TypeName="Model.Message">
+              <MappingFragment StoreEntitySet="Message">
+                <ScalarProperty Name="Statut_lu" ColumnName="Statut_lu" />
+                <ScalarProperty Name="DateEnvoie" ColumnName="DateEnvoie" />
+                <ScalarProperty Name="Texte" ColumnName="Texte" />
+                <ScalarProperty Name="Sujet" ColumnName="Sujet" />
+                <ScalarProperty Name="ToUserID" ColumnName="ToUserID" />
+                <ScalarProperty Name="FromUserID" ColumnName="FromUserID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Users">
             <EntityTypeMapping TypeName="Model.User">
               <MappingFragment StoreEntitySet="User">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="RoleID" ColumnName="RoleID" />
-                <ScalarProperty Name="Login" ColumnName="Login" />
                 <ScalarProperty Name="Statut_disponible" ColumnName="Statut_disponible" />
+                <ScalarProperty Name="Login" ColumnName="Login" />
+                <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

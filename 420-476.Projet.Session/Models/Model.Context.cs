@@ -27,11 +27,11 @@ namespace _420_476.Projet.Session.Models
     
         public virtual DbSet<Animal> Animals { get; set; }
         public virtual DbSet<Membre> Membres { get; set; }
-        public virtual DbSet<Message> Messages { get; set; }
         public virtual DbSet<Offrant> Offrants { get; set; }
         public virtual DbSet<Role> Roles { get; set; }
         public virtual DbSet<Service> Services { get; set; }
         public virtual DbSet<ServicesRating> ServicesRatings { get; set; }
+        public virtual DbSet<Message> Messages { get; set; }
         public virtual DbSet<User> Users { get; set; }
     }
 }

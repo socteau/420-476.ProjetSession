@@ -1,6 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<parameters>
-  <parameter name="Pet_CareEntities-Web.config Connection String" description="Pet_CareEntities Connection String used in web.config by the application to access the database." defaultValue="metadata=res://*/Models.Model.csdl|res://*/Models.Model.ssdl|res://*/Models.Model.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=bddeploiement.database.windows.net;initial catalog=Pet-Care;user id=admindeploiement;MultipleActiveResultSets=True;App=EntityFramework&quot;" tags="SqlConnectionString">
-    <parameterEntry kind="XmlFile" scope="C:\\Users\\mark_\\OneDrive\\Documents\\420-476\.ProjetSession\\420-476\.Projet\.Session\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='Pet_CareEntities']/@connectionString" />
-  </parameter>
-</parameters>
