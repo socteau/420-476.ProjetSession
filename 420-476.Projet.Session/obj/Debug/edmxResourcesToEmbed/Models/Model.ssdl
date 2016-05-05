@@ -1,5 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
+<<<<<<< HEAD
 <Schema Namespace="Pet_CareModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+=======
+<Schema Namespace="Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+>>>>>>> dc7c640194bb8254ce63c7e7c5330bc65335c260
   <EntityType Name="Animal">
     <Key>
       <PropertyRef Name="ID" />
@@ -10,6 +14,10 @@
     <Property Name="Race" Type="varchar" MaxLength="50" />
     <Property Name="Age" Type="int" />
     <Property Name="Besoins" Type="varchar(max)" />
+<<<<<<< HEAD
+=======
+    <Property Name="Etat" Type="varchar" MaxLength="25" />
+>>>>>>> dc7c640194bb8254ce63c7e7c5330bc65335c260
   </EntityType>
   <EntityType Name="Membre">
     <Key>
@@ -19,7 +27,10 @@
     <Property Name="FirstName" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="LastName" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="Address" Type="varchar" MaxLength="75" Nullable="false" />
+<<<<<<< HEAD
     <Property Name="AverageRating" Type="numeric" Precision="2" Scale="1" Nullable="false" />
+=======
+>>>>>>> dc7c640194bb8254ce63c7e7c5330bc65335c260
   </EntityType>
   <EntityType Name="Message">
     <Key>
@@ -31,7 +42,11 @@
     <Property Name="Sujet" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="Texte" Type="varchar(max)" Nullable="false" />
     <Property Name="DateEnvoie" Type="datetime" Nullable="false" />
+<<<<<<< HEAD
     <Property Name="Statut_lu" Type="binary" MaxLength="1" Nullable="false" />
+=======
+    <Property Name="Statut_lu" Type="bit" Nullable="false" />
+>>>>>>> dc7c640194bb8254ce63c7e7c5330bc65335c260
   </EntityType>
   <EntityType Name="Offrant">
     <Key>
@@ -39,6 +54,7 @@
     </Key>
     <Property Name="MembreID" Type="int" Nullable="false" />
     <Property Name="Region" Type="nvarchar" MaxLength="75" />
+<<<<<<< HEAD
   </EntityType>
   <EntityType Name="Ratings">
     <Key>
@@ -49,6 +65,9 @@
     <Property Name="OffrantID" Type="int" Nullable="false" />
     <Property Name="Note" Type="decimal" Precision="2" Scale="1" Nullable="false" />
     <Property Name="Text" Type="varchar" MaxLength="144" />
+=======
+    <Property Name="AverageRating" Type="numeric" Precision="2" Scale="1" Nullable="false" />
+>>>>>>> dc7c640194bb8254ce63c7e7c5330bc65335c260
   </EntityType>
   <EntityType Name="Roles">
     <Key>
@@ -68,6 +87,20 @@
     <Property Name="Type" Type="varchar" MaxLength="25" Nullable="false" />
     <Property Name="Prix" Type="decimal" Precision="18" Scale="2" Nullable="false" />
   </EntityType>
+<<<<<<< HEAD
+=======
+  <EntityType Name="ServicesRatings">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ServiceID" Type="int" Nullable="false" />
+    <Property Name="MembreID" Type="int" Nullable="false" />
+    <Property Name="OffrantID" Type="int" Nullable="false" />
+    <Property Name="Note" Type="decimal" Precision="2" Scale="1" />
+    <Property Name="Text" Type="varchar" MaxLength="144" />
+  </EntityType>
+>>>>>>> dc7c640194bb8254ce63c7e7c5330bc65335c260
   <EntityType Name="User">
     <Key>
       <PropertyRef Name="ID" />
@@ -75,7 +108,11 @@
     <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="RoleID" Type="int" Nullable="false" />
     <Property Name="Login" Type="varchar" MaxLength="50" Nullable="false" />
+<<<<<<< HEAD
     <Property Name="Statut_disponible" Type="binary" MaxLength="1" Nullable="false" />
+=======
+    <Property Name="Statut_disponible" Type="bit" Nullable="false" />
+>>>>>>> dc7c640194bb8254ce63c7e7c5330bc65335c260
   </EntityType>
   <Association Name="FK_Animal_Membre">
     <End Role="Membre" Type="Self.Membre" Multiplicity="1" />
@@ -137,30 +174,11 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+<<<<<<< HEAD
   <Association Name="FK_Ratings_Membre">
     <End Role="Membre" Type="Self.Membre" Multiplicity="1" />
     <End Role="Ratings" Type="Self.Ratings" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Membre">
-        <PropertyRef Name="UserID" />
-      </Principal>
-      <Dependent Role="Ratings">
-        <PropertyRef Name="MembreID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Ratings_Offrant">
-    <End Role="Offrant" Type="Self.Offrant" Multiplicity="1" />
-    <End Role="Ratings" Type="Self.Ratings" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Offrant">
-        <PropertyRef Name="MembreID" />
-      </Principal>
-      <Dependent Role="Ratings">
-        <PropertyRef Name="OffrantID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
+=======
   <Association Name="FK_Services_Offrant">
     <End Role="Offrant" Type="Self.Offrant" Multiplicity="1" />
     <End Role="Services" Type="Self.Services" Multiplicity="*" />
@@ -170,6 +188,69 @@
       </Principal>
       <Dependent Role="Services">
         <PropertyRef Name="OffrantID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ServicesRatings_Membre">
+    <End Role="Membre" Type="Self.Membre" Multiplicity="1" />
+    <End Role="ServicesRatings" Type="Self.ServicesRatings" Multiplicity="*" />
+>>>>>>> dc7c640194bb8254ce63c7e7c5330bc65335c260
+    <ReferentialConstraint>
+      <Principal Role="Membre">
+        <PropertyRef Name="UserID" />
+      </Principal>
+<<<<<<< HEAD
+      <Dependent Role="Ratings">
+=======
+      <Dependent Role="ServicesRatings">
+>>>>>>> dc7c640194bb8254ce63c7e7c5330bc65335c260
+        <PropertyRef Name="MembreID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+<<<<<<< HEAD
+  <Association Name="FK_Ratings_Offrant">
+    <End Role="Offrant" Type="Self.Offrant" Multiplicity="1" />
+    <End Role="Ratings" Type="Self.Ratings" Multiplicity="*" />
+=======
+  <Association Name="FK_ServicesRatings_Offrant">
+    <End Role="Offrant" Type="Self.Offrant" Multiplicity="1" />
+    <End Role="ServicesRatings" Type="Self.ServicesRatings" Multiplicity="*" />
+>>>>>>> dc7c640194bb8254ce63c7e7c5330bc65335c260
+    <ReferentialConstraint>
+      <Principal Role="Offrant">
+        <PropertyRef Name="MembreID" />
+      </Principal>
+<<<<<<< HEAD
+      <Dependent Role="Ratings">
+=======
+      <Dependent Role="ServicesRatings">
+>>>>>>> dc7c640194bb8254ce63c7e7c5330bc65335c260
+        <PropertyRef Name="OffrantID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+<<<<<<< HEAD
+  <Association Name="FK_Services_Offrant">
+    <End Role="Offrant" Type="Self.Offrant" Multiplicity="1" />
+    <End Role="Services" Type="Self.Services" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Offrant">
+        <PropertyRef Name="MembreID" />
+      </Principal>
+      <Dependent Role="Services">
+        <PropertyRef Name="OffrantID" />
+=======
+  <Association Name="FK_ServicesRatings_Services">
+    <End Role="Services" Type="Self.Services" Multiplicity="1" />
+    <End Role="ServicesRatings" Type="Self.ServicesRatings" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Services">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ServicesRatings">
+        <PropertyRef Name="ServiceID" />
+>>>>>>> dc7c640194bb8254ce63c7e7c5330bc65335c260
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -185,14 +266,24 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+<<<<<<< HEAD
   <EntityContainer Name="Pet_CareModelStoreContainer">
+=======
+  <EntityContainer Name="ModelStoreContainer">
+>>>>>>> dc7c640194bb8254ce63c7e7c5330bc65335c260
     <EntitySet Name="Animal" EntityType="Self.Animal" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Membre" EntityType="Self.Membre" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Message" EntityType="Self.Message" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Offrant" EntityType="Self.Offrant" Schema="dbo" store:Type="Tables" />
+<<<<<<< HEAD
     <EntitySet Name="Ratings" EntityType="Self.Ratings" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Services" EntityType="Self.Services" Schema="dbo" store:Type="Tables" />
+=======
+    <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Services" EntityType="Self.Services" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ServicesRatings" EntityType="Self.ServicesRatings" Schema="dbo" store:Type="Tables" />
+>>>>>>> dc7c640194bb8254ce63c7e7c5330bc65335c260
     <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
     <AssociationSet Name="FK_Animal_Membre" Association="Self.FK_Animal_Membre">
       <End Role="Membre" EntitySet="Membre" />
@@ -214,6 +305,7 @@
       <End Role="Membre" EntitySet="Membre" />
       <End Role="Offrant" EntitySet="Offrant" />
     </AssociationSet>
+<<<<<<< HEAD
     <AssociationSet Name="FK_Ratings_Membre" Association="Self.FK_Ratings_Membre">
       <End Role="Membre" EntitySet="Membre" />
       <End Role="Ratings" EntitySet="Ratings" />
@@ -225,6 +317,23 @@
     <AssociationSet Name="FK_Services_Offrant" Association="Self.FK_Services_Offrant">
       <End Role="Offrant" EntitySet="Offrant" />
       <End Role="Services" EntitySet="Services" />
+=======
+    <AssociationSet Name="FK_Services_Offrant" Association="Self.FK_Services_Offrant">
+      <End Role="Offrant" EntitySet="Offrant" />
+      <End Role="Services" EntitySet="Services" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ServicesRatings_Membre" Association="Self.FK_ServicesRatings_Membre">
+      <End Role="Membre" EntitySet="Membre" />
+      <End Role="ServicesRatings" EntitySet="ServicesRatings" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ServicesRatings_Offrant" Association="Self.FK_ServicesRatings_Offrant">
+      <End Role="Offrant" EntitySet="Offrant" />
+      <End Role="ServicesRatings" EntitySet="ServicesRatings" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ServicesRatings_Services" Association="Self.FK_ServicesRatings_Services">
+      <End Role="Services" EntitySet="Services" />
+      <End Role="ServicesRatings" EntitySet="ServicesRatings" />
+>>>>>>> dc7c640194bb8254ce63c7e7c5330bc65335c260
     </AssociationSet>
     <AssociationSet Name="FK_User_Roles" Association="Self.FK_User_Roles">
       <End Role="Roles" EntitySet="Roles" />

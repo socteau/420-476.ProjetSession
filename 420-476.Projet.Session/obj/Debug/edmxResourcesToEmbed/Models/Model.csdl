@@ -1,5 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
+<<<<<<< HEAD
 <Schema Namespace="Pet_CareModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+=======
+<Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+>>>>>>> dc7c640194bb8254ce63c7e7c5330bc65335c260
   <EntityType Name="Animal">
     <Key>
       <PropertyRef Name="ID" />
@@ -10,6 +14,10 @@
     <Property Name="Race" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="Age" Type="Int32" />
     <Property Name="Besoins" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+<<<<<<< HEAD
+=======
+    <Property Name="Etat" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+>>>>>>> dc7c640194bb8254ce63c7e7c5330bc65335c260
     <NavigationProperty Name="Membre" Relationship="Self.FK_Animal_Membre" FromRole="Animal" ToRole="Membre" />
   </EntityType>
   <EntityType Name="Membre">
@@ -20,6 +28,7 @@
     <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="Address" Type="String" MaxLength="75" FixedLength="false" Unicode="false" Nullable="false" />
+<<<<<<< HEAD
     <Property Name="AverageRating" Type="Decimal" Precision="2" Scale="1" Nullable="false" />
     <NavigationProperty Name="Animals" Relationship="Self.FK_Animal_Membre" FromRole="Membre" ToRole="Animal" />
     <NavigationProperty Name="User" Relationship="Self.FK_Membre_User" FromRole="Membre" ToRole="User" />
@@ -39,6 +48,12 @@
     <Property Name="Statut_lu" Type="Binary" MaxLength="1" FixedLength="true" Nullable="false" />
     <NavigationProperty Name="User" Relationship="Self.FK_Message_User" FromRole="Message" ToRole="User" />
     <NavigationProperty Name="User1" Relationship="Self.FK_Message_User1" FromRole="Message" ToRole="User" />
+=======
+    <NavigationProperty Name="Animals" Relationship="Self.FK_Animal_Membre" FromRole="Membre" ToRole="Animal" />
+    <NavigationProperty Name="Offrant" Relationship="Self.FK_Offrant_Membre" FromRole="Membre" ToRole="Offrant" />
+    <NavigationProperty Name="ServicesRatings" Relationship="Self.FK_ServicesRatings_Membre" FromRole="Membre" ToRole="ServicesRatings" />
+    <NavigationProperty Name="User" Relationship="Model.FK_Membre_User" FromRole="Membre" ToRole="User" />
+>>>>>>> dc7c640194bb8254ce63c7e7c5330bc65335c260
   </EntityType>
   <EntityType Name="Offrant">
     <Key>
@@ -46,6 +61,7 @@
     </Key>
     <Property Name="MembreID" Type="Int32" Nullable="false" />
     <Property Name="Region" Type="String" MaxLength="75" FixedLength="false" Unicode="true" />
+<<<<<<< HEAD
     <NavigationProperty Name="Membre" Relationship="Self.FK_Offrant_Membre" FromRole="Offrant" ToRole="Membre" />
     <NavigationProperty Name="Ratings" Relationship="Self.FK_Ratings_Offrant" FromRole="Offrant" ToRole="Ratings" />
     <NavigationProperty Name="Services" Relationship="Self.FK_Services_Offrant" FromRole="Offrant" ToRole="Services" />
@@ -61,6 +77,12 @@
     <Property Name="Text" Type="String" MaxLength="144" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="Membre" Relationship="Self.FK_Ratings_Membre" FromRole="Ratings" ToRole="Membre" />
     <NavigationProperty Name="Offrant" Relationship="Self.FK_Ratings_Offrant" FromRole="Ratings" ToRole="Offrant" />
+=======
+    <Property Name="AverageRating" Type="Decimal" Precision="2" Scale="1" Nullable="false" />
+    <NavigationProperty Name="Membre" Relationship="Self.FK_Offrant_Membre" FromRole="Offrant" ToRole="Membre" />
+    <NavigationProperty Name="Services" Relationship="Self.FK_Services_Offrant" FromRole="Offrant" ToRole="Services" />
+    <NavigationProperty Name="ServicesRatings" Relationship="Self.FK_ServicesRatings_Offrant" FromRole="Offrant" ToRole="ServicesRatings" />
+>>>>>>> dc7c640194bb8254ce63c7e7c5330bc65335c260
   </EntityType>
   <EntityType Name="Role">
     <Key>
@@ -69,7 +91,11 @@
     <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Label" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+<<<<<<< HEAD
     <NavigationProperty Name="Users" Relationship="Self.FK_User_Roles" FromRole="Roles" ToRole="User" />
+=======
+    <NavigationProperty Name="Users" Relationship="Model.FK_User_Roles" FromRole="Role" ToRole="User" />
+>>>>>>> dc7c640194bb8254ce63c7e7c5330bc65335c260
   </EntityType>
   <EntityType Name="Service">
     <Key>
@@ -81,12 +107,19 @@
     <Property Name="Type" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="Prix" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
     <NavigationProperty Name="Offrant" Relationship="Self.FK_Services_Offrant" FromRole="Services" ToRole="Offrant" />
+<<<<<<< HEAD
   </EntityType>
   <EntityType Name="User">
+=======
+    <NavigationProperty Name="ServicesRatings" Relationship="Self.FK_ServicesRatings_Services" FromRole="Services" ToRole="ServicesRatings" />
+  </EntityType>
+  <EntityType Name="ServicesRating">
+>>>>>>> dc7c640194bb8254ce63c7e7c5330bc65335c260
     <Key>
       <PropertyRef Name="ID" />
     </Key>
     <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+<<<<<<< HEAD
     <Property Name="RoleID" Type="Int32" Nullable="false" />
     <Property Name="Login" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="Statut_disponible" Type="Binary" MaxLength="1" FixedLength="true" Nullable="false" />
@@ -94,6 +127,16 @@
     <NavigationProperty Name="Messages" Relationship="Self.FK_Message_User" FromRole="User" ToRole="Message" />
     <NavigationProperty Name="Messages1" Relationship="Self.FK_Message_User1" FromRole="User" ToRole="Message" />
     <NavigationProperty Name="Role" Relationship="Self.FK_User_Roles" FromRole="User" ToRole="Roles" />
+=======
+    <Property Name="ServiceID" Type="Int32" Nullable="false" />
+    <Property Name="MembreID" Type="Int32" Nullable="false" />
+    <Property Name="OffrantID" Type="Int32" Nullable="false" />
+    <Property Name="Note" Type="Decimal" Precision="2" Scale="1" />
+    <Property Name="Text" Type="String" MaxLength="144" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Membre" Relationship="Self.FK_ServicesRatings_Membre" FromRole="ServicesRatings" ToRole="Membre" />
+    <NavigationProperty Name="Offrant" Relationship="Self.FK_ServicesRatings_Offrant" FromRole="ServicesRatings" ToRole="Offrant" />
+    <NavigationProperty Name="Service" Relationship="Self.FK_ServicesRatings_Services" FromRole="ServicesRatings" ToRole="Services" />
+>>>>>>> dc7c640194bb8254ce63c7e7c5330bc65335c260
   </EntityType>
   <Association Name="FK_Animal_Membre">
     <End Role="Membre" Type="Self.Membre" Multiplicity="1" />
@@ -107,6 +150,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+<<<<<<< HEAD
   <Association Name="FK_Membre_User">
     <End Role="User" Type="Self.User" Multiplicity="1" />
     <End Role="Membre" Type="Self.Membre" Multiplicity="0..1" />
@@ -119,6 +163,8 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+=======
+>>>>>>> dc7c640194bb8254ce63c7e7c5330bc65335c260
   <Association Name="FK_Offrant_Membre">
     <End Role="Membre" Type="Self.Membre" Multiplicity="1" />
     <End Role="Offrant" Type="Self.Offrant" Multiplicity="0..1" />
@@ -131,18 +177,29 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+<<<<<<< HEAD
   <Association Name="FK_Ratings_Membre">
     <End Role="Membre" Type="Self.Membre" Multiplicity="1" />
     <End Role="Ratings" Type="Self.Rating" Multiplicity="*" />
+=======
+  <Association Name="FK_ServicesRatings_Membre">
+    <End Role="Membre" Type="Self.Membre" Multiplicity="1" />
+    <End Role="ServicesRatings" Type="Self.ServicesRating" Multiplicity="*" />
+>>>>>>> dc7c640194bb8254ce63c7e7c5330bc65335c260
     <ReferentialConstraint>
       <Principal Role="Membre">
         <PropertyRef Name="UserID" />
       </Principal>
+<<<<<<< HEAD
       <Dependent Role="Ratings">
+=======
+      <Dependent Role="ServicesRatings">
+>>>>>>> dc7c640194bb8254ce63c7e7c5330bc65335c260
         <PropertyRef Name="MembreID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
+<<<<<<< HEAD
   <Association Name="FK_Message_User">
     <End Role="User" Type="Self.User" Multiplicity="1" />
     <End Role="Message" Type="Self.Message" Multiplicity="*" />
@@ -170,27 +227,47 @@
   <Association Name="FK_Ratings_Offrant">
     <End Role="Offrant" Type="Self.Offrant" Multiplicity="1" />
     <End Role="Ratings" Type="Self.Rating" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Offrant">
-        <PropertyRef Name="MembreID" />
-      </Principal>
-      <Dependent Role="Ratings">
-        <PropertyRef Name="OffrantID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
+=======
   <Association Name="FK_Services_Offrant">
     <End Role="Offrant" Type="Self.Offrant" Multiplicity="1" />
     <End Role="Services" Type="Self.Service" Multiplicity="*" />
+>>>>>>> dc7c640194bb8254ce63c7e7c5330bc65335c260
     <ReferentialConstraint>
       <Principal Role="Offrant">
         <PropertyRef Name="MembreID" />
       </Principal>
+<<<<<<< HEAD
+      <Dependent Role="Ratings">
+=======
       <Dependent Role="Services">
+>>>>>>> dc7c640194bb8254ce63c7e7c5330bc65335c260
         <PropertyRef Name="OffrantID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
+<<<<<<< HEAD
+  <Association Name="FK_Services_Offrant">
+    <End Role="Offrant" Type="Self.Offrant" Multiplicity="1" />
+    <End Role="Services" Type="Self.Service" Multiplicity="*" />
+=======
+  <Association Name="FK_ServicesRatings_Offrant">
+    <End Role="Offrant" Type="Self.Offrant" Multiplicity="1" />
+    <End Role="ServicesRatings" Type="Self.ServicesRating" Multiplicity="*" />
+>>>>>>> dc7c640194bb8254ce63c7e7c5330bc65335c260
+    <ReferentialConstraint>
+      <Principal Role="Offrant">
+        <PropertyRef Name="MembreID" />
+      </Principal>
+<<<<<<< HEAD
+      <Dependent Role="Services">
+=======
+      <Dependent Role="ServicesRatings">
+>>>>>>> dc7c640194bb8254ce63c7e7c5330bc65335c260
+        <PropertyRef Name="OffrantID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+<<<<<<< HEAD
   <Association Name="FK_User_Roles">
     <End Role="Roles" Type="Self.Role" Multiplicity="1" />
     <End Role="User" Type="Self.User" Multiplicity="*" />
@@ -200,22 +277,41 @@
       </Principal>
       <Dependent Role="User">
         <PropertyRef Name="RoleID" />
+=======
+  <Association Name="FK_ServicesRatings_Services">
+    <End Role="Services" Type="Self.Service" Multiplicity="1" />
+    <End Role="ServicesRatings" Type="Self.ServicesRating" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Services">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ServicesRatings">
+        <PropertyRef Name="ServiceID" />
+>>>>>>> dc7c640194bb8254ce63c7e7c5330bc65335c260
       </Dependent>
     </ReferentialConstraint>
   </Association>
   <EntityContainer Name="Pet_CareEntities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="Animals" EntityType="Self.Animal" />
     <EntitySet Name="Membres" EntityType="Self.Membre" />
+<<<<<<< HEAD
     <EntitySet Name="Messages" EntityType="Self.Message" />
     <EntitySet Name="Offrants" EntityType="Self.Offrant" />
     <EntitySet Name="Ratings" EntityType="Self.Rating" />
     <EntitySet Name="Roles" EntityType="Self.Role" />
     <EntitySet Name="Services" EntityType="Self.Service" />
     <EntitySet Name="Users" EntityType="Self.User" />
+=======
+    <EntitySet Name="Offrants" EntityType="Self.Offrant" />
+    <EntitySet Name="Roles" EntityType="Self.Role" />
+    <EntitySet Name="Services" EntityType="Self.Service" />
+    <EntitySet Name="ServicesRatings" EntityType="Self.ServicesRating" />
+>>>>>>> dc7c640194bb8254ce63c7e7c5330bc65335c260
     <AssociationSet Name="FK_Animal_Membre" Association="Self.FK_Animal_Membre">
       <End Role="Membre" EntitySet="Membres" />
       <End Role="Animal" EntitySet="Animals" />
     </AssociationSet>
+<<<<<<< HEAD
     <AssociationSet Name="FK_Membre_User" Association="Self.FK_Membre_User">
       <End Role="User" EntitySet="Users" />
       <End Role="Membre" EntitySet="Membres" />
@@ -249,4 +345,120 @@
       <End Role="User" EntitySet="Users" />
     </AssociationSet>
   </EntityContainer>
+=======
+    <AssociationSet Name="FK_Offrant_Membre" Association="Self.FK_Offrant_Membre">
+      <End Role="Membre" EntitySet="Membres" />
+      <End Role="Offrant" EntitySet="Offrants" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ServicesRatings_Membre" Association="Self.FK_ServicesRatings_Membre">
+      <End Role="Membre" EntitySet="Membres" />
+      <End Role="ServicesRatings" EntitySet="ServicesRatings" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Services_Offrant" Association="Self.FK_Services_Offrant">
+      <End Role="Offrant" EntitySet="Offrants" />
+      <End Role="Services" EntitySet="Services" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ServicesRatings_Offrant" Association="Self.FK_ServicesRatings_Offrant">
+      <End Role="Offrant" EntitySet="Offrants" />
+      <End Role="ServicesRatings" EntitySet="ServicesRatings" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ServicesRatings_Services" Association="Self.FK_ServicesRatings_Services">
+      <End Role="Services" EntitySet="Services" />
+      <End Role="ServicesRatings" EntitySet="ServicesRatings" />
+    </AssociationSet>
+    <EntitySet Name="Messages" EntityType="Model.Message" />
+    <EntitySet Name="Users" EntityType="Model.User" />
+    <AssociationSet Name="FK_Membre_User" Association="Model.FK_Membre_User">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Membre" EntitySet="Membres" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Message_User" Association="Model.FK_Message_User">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Message" EntitySet="Messages" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Message_User1" Association="Model.FK_Message_User1">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Message" EntitySet="Messages" />
+    </AssociationSet>
+    <AssociationSet Name="FK_User_Roles" Association="Model.FK_User_Roles">
+      <End Role="Role" EntitySet="Roles" />
+      <End Role="User" EntitySet="Users" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Message">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FromUserID" Type="Int32" Nullable="false" />
+    <Property Name="ToUserID" Type="Int32" Nullable="false" />
+    <Property Name="Sujet" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Texte" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="DateEnvoie" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Statut_lu" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="User" Relationship="Model.FK_Message_User" FromRole="Message" ToRole="User" />
+    <NavigationProperty Name="User1" Relationship="Model.FK_Message_User1" FromRole="Message" ToRole="User" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RoleID" Type="Int32" Nullable="false" />
+    <Property Name="Login" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Statut_disponible" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Membre" Relationship="Model.FK_Membre_User" FromRole="User" ToRole="Membre" />
+    <NavigationProperty Name="Messages" Relationship="Model.FK_Message_User" FromRole="User" ToRole="Message" />
+    <NavigationProperty Name="Messages1" Relationship="Model.FK_Message_User1" FromRole="User" ToRole="Message" />
+    <NavigationProperty Name="Role" Relationship="Model.FK_User_Roles" FromRole="User" ToRole="Role" />
+  </EntityType>
+  <Association Name="FK_Membre_User">
+    <End Type="Model.User" Role="User" Multiplicity="1" />
+    <End Type="Model.Membre" Role="Membre" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Membre">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Message_User">
+    <End Type="Model.User" Role="User" Multiplicity="1" />
+    <End Type="Model.Message" Role="Message" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Message">
+        <PropertyRef Name="FromUserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Message_User1">
+    <End Type="Model.User" Role="User" Multiplicity="1" />
+    <End Type="Model.Message" Role="Message" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Message">
+        <PropertyRef Name="ToUserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_User_Roles">
+    <End Type="Model.Role" Role="Role" Multiplicity="1" />
+    <End Type="Model.User" Role="User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Role">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="User">
+        <PropertyRef Name="RoleID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+>>>>>>> dc7c640194bb8254ce63c7e7c5330bc65335c260
 </Schema>
