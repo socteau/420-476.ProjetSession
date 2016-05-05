@@ -17,17 +17,18 @@ namespace _420_476.Projet.Session.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Offrant()
         {
-            this.Ratings = new HashSet<Rating>();
             this.Services = new HashSet<Service>();
+            this.ServicesRatings = new HashSet<ServicesRating>();
         }
     
         public int MembreID { get; set; }
         public string Region { get; set; }
+        public decimal AverageRating { get; set; }
     
         public virtual Membre Membre { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Rating> Ratings { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Service> Services { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ServicesRating> ServicesRatings { get; set; }
     }
 }
