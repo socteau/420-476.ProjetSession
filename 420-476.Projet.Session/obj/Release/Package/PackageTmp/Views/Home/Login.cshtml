@@ -1,0 +1,15 @@
+﻿
+@{
+    ViewBag.Title = "Login";
+}
+
+<h2>Login</h2>
+@using(Html.BeginForm("LoginIn","Home",FormMethod.Post))
+{
+<input id="Text1" type="text" placeholder="User" /><br />
+<input id="Password1" type="password" placeholder="pwd" /><br />
+<input id="Checkbox1" type="checkbox" />
+<label>Remember my Grandma</label><br />
+<input id="Submit1" type="submit" value="submit" />
+}
+@Html.ActionLink("Creer un compte","Create","Users");

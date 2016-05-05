@@ -1,0 +1,66 @@
+﻿@model _420_476.Projet.Session.Models.Message
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Message</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Sujet)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sujet)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Texte)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Texte)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DateEnvoie)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateEnvoie)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Statut_lu)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Statut_lu)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.User.Login)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.User.Login)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.User1.Login)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.User1.Login)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

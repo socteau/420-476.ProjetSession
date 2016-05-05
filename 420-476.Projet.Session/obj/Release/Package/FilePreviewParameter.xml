@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="IIS Web Application Name" description="" value="pet-care" tags="IisApp">
+    <parameterEntry kind="ProviderPath" scope="IisApp" match="^D:\\Users\\0645637\\Documents\\Session\\420-476\.Projet\.Session\\obj\\Release\\Package\\PackageTmp$" />
+    <parameterEntry kind="ProviderPath" scope="setAcl" match="^D:\\Users\\0645637\\Documents\\Session\\420-476\.Projet\.Session\\obj\\Release\\Package\\PackageTmp$" />
+  </parameter>
+  <parameter name="Pet_CareEntities-Web.config Connection String" description="" value="metadata=res://*/Models.Model.csdl|res://*/Models.Model.ssdl|res://*/Models.Model.msl;provider=System.Data.SqlClient;provider connection string=&quot;Data Source=tcp:bddeploiement.database.windows.net,1433;Initial Catalog=Pet-Care;User Id=AdminPetCare@bddeploiement.database.windows.net;Password=420!pwd&quot;" tags="">
+    <parameterEntry kind="XmlFile" scope="D:\\Users\\0645637\\Documents\\Session\\420-476\.Projet\.Session\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='Pet_CareEntities']/@connectionString" />
+  </parameter>
+</parameters>
