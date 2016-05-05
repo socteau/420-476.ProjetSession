@@ -8,6 +8,26 @@ namespace _420_476.Projet.Session.Controllers
 {
     public class HomeController : Controller
     {
+        public ActionResult Login()
+        {
+            return View();
+        }
+
+        public ActionResult LoginIn()
+        {
+            return RedirectToAction("Index");
+        }
+
+        public ActionResult Profil()
+        {
+            return View();
+        }
+
+        public ActionResult Theme()
+        {
+            return View();
+        }
+
         public ActionResult Index()
         {
             return View();

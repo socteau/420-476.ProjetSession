@@ -112,3 +112,9 @@ C:\Users\mark_\OneDrive\Documents\420-476.ProjetSession\420-476.Projet.Session\b
 C:\Users\mark_\OneDrive\Documents\420-476.ProjetSession\420-476.Projet.Session\obj\Debug\420-476.Projet.Session.dll
 C:\Users\mark_\OneDrive\Documents\420-476.ProjetSession\420-476.Projet.Session\obj\Debug\420-476.Projet.Session.pdb
 C:\Users\mark_\OneDrive\Documents\420-476.ProjetSession\420-476.Projet.Session\obj\Debug\420-476.Projet.Session.csprojResolveAssemblyReference.cache
+C:\Users\mark_\OneDrive\Documents\420-476.ProjetSession\420-476.Projet.Session\bin\System.Net.Http.Formatting.dll
+C:\Users\mark_\OneDrive\Documents\420-476.ProjetSession\420-476.Projet.Session\bin\System.Web.Http.dll
+C:\Users\mark_\OneDrive\Documents\420-476.ProjetSession\420-476.Projet.Session\bin\System.Web.Http.WebHost.dll
+C:\Users\mark_\OneDrive\Documents\420-476.ProjetSession\420-476.Projet.Session\bin\System.Net.Http.Formatting.xml
+C:\Users\mark_\OneDrive\Documents\420-476.ProjetSession\420-476.Projet.Session\bin\System.Web.Http.xml
+C:\Users\mark_\OneDrive\Documents\420-476.ProjetSession\420-476.Projet.Session\bin\System.Web.Http.WebHost.xml
