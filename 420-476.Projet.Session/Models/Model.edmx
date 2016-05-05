@@ -63,6 +63,7 @@
           <Property Name="Label" Type="varchar" MaxLength="25" Nullable="false" />
           <Property Name="Type" Type="varchar" MaxLength="25" Nullable="false" />
           <Property Name="Prix" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Statut_actif" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="ServicesRatings">
           <Key>
@@ -315,6 +316,7 @@
           <Property Name="Prix" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
           <NavigationProperty Name="Offrant" Relationship="Self.FK_Services_Offrant" FromRole="Services" ToRole="Offrant" />
           <NavigationProperty Name="ServicesRatings" Relationship="Self.FK_ServicesRatings_Services" FromRole="Services" ToRole="ServicesRatings" />
+          <Property Name="Statut_actif" Type="Boolean" Nullable="false" />
         </EntityType>
         <EntityType Name="ServicesRating">
           <Key>
@@ -577,6 +579,7 @@
           <EntitySetMapping Name="Services">
             <EntityTypeMapping TypeName="Model.Service">
               <MappingFragment StoreEntitySet="Services">
+                <ScalarProperty Name="Statut_actif" ColumnName="Statut_actif" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="OffrantID" ColumnName="OffrantID" />
                 <ScalarProperty Name="Label" ColumnName="Label" />
