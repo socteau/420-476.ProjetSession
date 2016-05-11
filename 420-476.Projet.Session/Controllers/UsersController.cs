@@ -7,6 +7,8 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using _420_476.Projet.Session.Models;
+using System.Web.Helpers;
+using System.Net.Mail;
 
 namespace _420_476.Projet.Session.Controllers
 {
@@ -49,12 +51,16 @@ namespace _420_476.Projet.Session.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,RoleID,Login,Statut_disponible")] User user)
+        public ActionResult Create([Bind(Include = "ID,RoleID,Login,Statut_disponible,Email,Password")] User user)
         {
             if (ModelState.IsValid)
             {
+                user.Role = db.Roles.Where(x =>x.ID==3).FirstOrDefault();
+                user.Statut_disponible = true;
+                user.Password = Crypto.HashPassword(user.Password);
                 db.Users.Add(user);
                 db.SaveChanges();
+                sendEmail(user);
                 return RedirectToAction("Index");
             }
 
@@ -85,7 +91,7 @@ namespace _420_476.Projet.Session.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,RoleID,Login,Statut_disponible")] User user)
+        public ActionResult Edit([Bind(Include = "ID,RoleID,Login,Statut_disponible,Email,Password")] User user)
         {
             if (ModelState.IsValid)
             {
@@ -131,6 +137,30 @@ namespace _420_476.Projet.Session.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+        private void sendEmail(User user)
+        {
+            string to = user.Email;
+            string from = "Pet.Care@email.com";
+            MailMessage message = new MailMessage(from, to);
+            message.Subject = "Welcome to Pet-Care.";
+            message.Body = @"Welcome "+user.Login+"!\nWelcome to Pet-Care";
+            SmtpClient client = new SmtpClient("smtp-pulse.com");
+            client.Port = 2525;
+            client.Credentials = new System.Net.NetworkCredential("samuel.octeau@hotmail.com", "iCGYsNnjAk");
+            // Credentials are necessary if the server requires the client 
+            // to authenticate before it will send e-mail on the client's behalf.
+            //client.UseDefaultCredentials = true;
+            try
+            {
+                client.Send(message);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Exception caught in CreateTestMessage2(): {0}",
+                            ex.ToString());
+            }
         }
     }
 }

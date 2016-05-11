@@ -79,6 +79,8 @@
     <Property Name="RoleID" Type="int" Nullable="false" />
     <Property Name="Login" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="Statut_disponible" Type="bit" Nullable="false" />
+    <Property Name="Email" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Password" Type="varchar" MaxLength="256" />
   </EntityType>
   <Association Name="FK_Animal_Membre">
     <End Role="Membre" Type="Self.Membre" Multiplicity="1" />

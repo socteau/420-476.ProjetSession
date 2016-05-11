@@ -318,7 +318,6 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Animals\Create.cshtml" />
@@ -349,16 +348,16 @@
     <Content Include="Views\Messages\GererPlaintes.cshtml" />
     <Content Include="Views\Gestion\Rapport.cshtml" />
     <Content Include="Views\Gestion\GererProfils.cshtml" />
-    <Content Include="Views\Users\Create.cshtml" />
-    <Content Include="Views\Users\Delete.cshtml" />
-    <Content Include="Views\Users\Details.cshtml" />
-    <Content Include="Views\Users\Edit.cshtml" />
-    <Content Include="Views\Users\Index.cshtml" />
     <Content Include="Views\ServicesRatings\Create.cshtml" />
     <Content Include="Views\ServicesRatings\Delete.cshtml" />
     <Content Include="Views\ServicesRatings\Details.cshtml" />
     <Content Include="Views\ServicesRatings\Edit.cshtml" />
     <Content Include="Views\ServicesRatings\Index.cshtml" />
+    <Content Include="Views\Users\Create.cshtml" />
+    <Content Include="Views\Users\Delete.cshtml" />
+    <Content Include="Views\Users\Details.cshtml" />
+    <Content Include="Views\Users\Edit.cshtml" />
+    <Content Include="Views\Users\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

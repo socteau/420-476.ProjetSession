@@ -82,6 +82,8 @@
     <EntitySetMapping Name="Users">
       <EntityTypeMapping TypeName="Model.User">
         <MappingFragment StoreEntitySet="User">
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
           <ScalarProperty Name="Statut_disponible" ColumnName="Statut_disponible" />
           <ScalarProperty Name="Login" ColumnName="Login" />
           <ScalarProperty Name="RoleID" ColumnName="RoleID" />
