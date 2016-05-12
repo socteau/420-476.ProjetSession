@@ -17,7 +17,7 @@ namespace _420_476.Projet.Session.Controllers
         // GET: Membres
         public ActionResult Index()
         {
-            var membres = db.Membres.Include(m => m.User).Include(m => m.Offrant);
+            var membres = db.Membres.Include(m => m.User).Include(m => m.Offrant).ToList();
             return View(membres.ToList());
         }
 

@@ -18,7 +18,8 @@ namespace _420_476.Projet.Session.Controllers
         // GET: Services
         public ActionResult Index()
         {
-            var services = db.Services.Include(s => s.Offrant);
+            var services = db.Services.Include(s => s.Offrant).ToList();
+            services = NavigationController.Prep(services);
             return View(services.ToList());
         }
 

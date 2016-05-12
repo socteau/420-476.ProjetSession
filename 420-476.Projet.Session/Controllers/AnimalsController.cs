@@ -17,7 +17,7 @@ namespace _420_476.Projet.Session.Controllers
         // GET: Animals
         public ActionResult Index()
         {
-            var animals = db.Animals.Include(a => a.Membre);
+            var animals = db.Animals.Include(a => a.Membre).ToList();
             return View(animals.ToList());
         }
 

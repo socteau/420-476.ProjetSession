@@ -175,6 +175,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MembresController.cs" />
     <Compile Include="Controllers\MessagesController.cs" />
+    <Compile Include="Controllers\NavigationController.cs" />
     <Compile Include="Controllers\ServicesController.cs" />
     <Compile Include="Controllers\ServicesRatingsController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
@@ -288,9 +289,11 @@
     </Content>
     <None Include="Properties\PublishProfiles\pet-care - FTP %282%29.pubxml" />
     <None Include="Properties\PublishProfiles\pet-care - FTP %283%29.pubxml" />
+    <None Include="Properties\PublishProfiles\pet-care - FTP %284%29.pubxml" />
     <None Include="Properties\PublishProfiles\pet-care - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\pet-care - Web Deploy %282%29.pubxml" />
     <None Include="Properties\PublishProfiles\pet-care - Web Deploy %283%29.pubxml" />
+    <None Include="Properties\PublishProfiles\pet-care - Web Deploy %284%29.pubxml" />
     <None Include="Properties\PublishProfiles\pet-care - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-2.2.3.intellisense.js" />
     <Content Include="Scripts\jquery-2.2.3.js" />
@@ -361,6 +364,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Navigation\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

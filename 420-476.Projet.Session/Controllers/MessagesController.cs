@@ -17,7 +17,8 @@ namespace _420_476.Projet.Session.Controllers
         // GET: Messages
         public ActionResult Index()
         {
-            var messages = db.Messages.Include(m => m.User).Include(m => m.User1);
+            var messages = db.Messages.Include(m => m.User).Include(m => m.User1).ToList();
+            messages = NavigationController.Prep(messages);
             return View(messages.ToList());
         }
 

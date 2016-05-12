@@ -17,7 +17,6 @@ namespace _420_476.Projet.Session.Controllers
             string message = errorMessage;
             errorMessage = null;
             ViewBag.errorMessage = message;
-
             return View();
         }
 
@@ -69,7 +68,6 @@ namespace _420_476.Projet.Session.Controllers
         public ActionResult Contact()
         {
             ViewBag.Message = "Your contact page.";
-
             return View();
         }
         private bool CheckPassword(string dbHashedPassword, string UserUnhashedPassword)

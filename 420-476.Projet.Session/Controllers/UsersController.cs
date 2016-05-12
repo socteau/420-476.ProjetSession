@@ -19,7 +19,7 @@ namespace _420_476.Projet.Session.Controllers
         // GET: Users
         public ActionResult Index()
         {
-            var users = db.Users.Include(u => u.Membre).Include(u => u.Role);
+            var users = db.Users.Include(u => u.Membre).Include(u => u.Role).ToList();
             return View(users.ToList());
         }
 
@@ -142,7 +142,7 @@ namespace _420_476.Projet.Session.Controllers
         private void sendEmail(User user)
         {
             string to = user.Email;
-            string from = "Pet.Care@email.com";
+            string from = "samuel.octeau@hotmail.com";
             MailMessage message = new MailMessage(from, to);
             message.Subject = "Welcome to Pet-Care.";
             message.Body = @"Welcome "+user.Login+"!\nWelcome to Pet-Care";
