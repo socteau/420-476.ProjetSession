@@ -86,7 +86,12 @@ namespace _420_476.Projet.Session.Controllers
 
         public void saveCookie()
         {
-            @Response.Cookies["typeOffre"].Value = "test";
+            string type = "";
+            foreach (string item in Request.Form)
+            {                
+                type = Request[item];
+            }
+            @Response.Cookies["typeOffre"].Value = type;
             @Response.Cookies["typeOffre"].Expires = DateTime.Now.AddDays(7);
         }
     }

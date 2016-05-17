@@ -178,7 +178,7 @@ namespace _420_476.Projet.Session.Controllers
                 Statut_lu = false,
                 Texte = msg
             };
-//            Console.Write(message.ToString());
+
             db.Messages.Add(message);
             db.SaveChanges();            
         }
