@@ -83,5 +83,11 @@ namespace _420_476.Projet.Session.Controllers
             Session["userName"] = null;
             return RedirectToAction("Index");
         }
+
+        public void saveCookie()
+        {
+            @Response.Cookies["typeOffre"].Value = "test";
+            @Response.Cookies["typeOffre"].Expires = DateTime.Now.AddDays(7);
+        }
     }
 }
