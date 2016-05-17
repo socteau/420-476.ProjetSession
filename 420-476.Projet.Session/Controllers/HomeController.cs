@@ -35,6 +35,7 @@ namespace _420_476.Projet.Session.Controllers
                     {
                         Session["userRole"] = user.Role.Label;
                         Session["userName"] = user.Login;
+                        Session["UserID"] = user.ID;
                         return RedirectToAction("Index");
                     }
                     else
@@ -91,6 +92,8 @@ namespace _420_476.Projet.Session.Controllers
                 var user = context.Users.Where(x => x.Login == log).FirstOrDefault();
                 var role = context.Roles.Where(x => x.ID == 4).FirstOrDefault();
                 user.Role = role;
+                Session["userRole"] = role.Label;
+
                 context.SaveChanges();
             }
             return RedirectToAction("Index");

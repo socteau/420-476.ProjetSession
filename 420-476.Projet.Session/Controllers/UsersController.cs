@@ -95,6 +95,15 @@ namespace _420_476.Projet.Session.Controllers
         {
             if (ModelState.IsValid)
             {
+                //int id = Int32.Parse(Session["UserID"].ToString());
+                var dbUser = db.Users.Where(x => x.ID == 1013).FirstOrDefault();
+                user.ID = dbUser.ID;
+                user.RoleID = dbUser.RoleID;
+                user.Statut_disponible = dbUser.Statut_disponible;
+                if (!SamePassword(user.ID, user.Password))
+                {
+                    user.Password = Crypto.HashPassword(user.Password);
+                }
                 db.Entry(user).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -160,6 +169,15 @@ namespace _420_476.Projet.Session.Controllers
             {
                 Console.WriteLine("Exception caught in CreateTestMessage2(): {0}",
                             ex.ToString());
+            }
+        }
+
+        public bool SamePassword(int id, string password)
+        {
+            using(Pet_CareEntities db = new Pet_CareEntities())
+            {
+                var hashPwd = db.Users.Where(x => x.ID == id).FirstOrDefault().Password;
+                return hashPwd.Equals(password);
             }
         }
     }

@@ -29,10 +29,13 @@
                     @if (Session["userRole"] != null)
                     {
                         <li>
-                            @Html.ActionLink("Profil Personnel", "Profil", "Home");
+                            @Html.ActionLink("Modifier informations personnelles", "Edit", "Users")
                         </li>
                         if (Session["userRole"].Equals("Membre") || Session["userRole"].Equals("Offrant"))
                         {
+                            <li>
+                                @Html.ActionLink("Profil Personnel", "Edit", "Members");
+                            </li>
                             <li><!--Changement du lien-->
                                 @*@Html.ActionLink("Devenir Offrant", "Evolve", "Home")*@
                                 <a onclick="if(confirm('Souhaitez vous reellement devenir un offrant de services pour Pet-Care')@Html.ActionLink("Devenir Offrant", "Evolve", "Home"))"></a>
@@ -60,6 +63,9 @@
                             </li>
                             <li>
                                 @Html.ActionLink("Modifier un offre", "Index", "Services")
+                            </li>
+                            <li>
+                                @Html.ActionLink("Choisir votre region d'activite", "Edit", "Offrants")
                             </li>
                         }
                         if (Session["userRole"].Equals("Gestionnaire"))

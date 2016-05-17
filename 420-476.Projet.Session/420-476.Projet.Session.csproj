@@ -176,6 +176,7 @@
     <Compile Include="Controllers\MembresController.cs" />
     <Compile Include="Controllers\MessagesController.cs" />
     <Compile Include="Controllers\NavigationController.cs" />
+    <Compile Include="Controllers\OffrantsController.cs" />
     <Compile Include="Controllers\ServicesController.cs" />
     <Compile Include="Controllers\ServicesRatingsController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
@@ -361,6 +362,11 @@
     <Content Include="Views\Users\Details.cshtml" />
     <Content Include="Views\Users\Edit.cshtml" />
     <Content Include="Views\Users\Index.cshtml" />
+    <Content Include="Views\Offrants\Create.cshtml" />
+    <Content Include="Views\Offrants\Delete.cshtml" />
+    <Content Include="Views\Offrants\Details.cshtml" />
+    <Content Include="Views\Offrants\Edit.cshtml" />
+    <Content Include="Views\Offrants\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

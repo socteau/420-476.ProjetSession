@@ -4,6 +4,26 @@
     ViewBag.Title = "Index";
 }
 
+<script type="text/javascript">
+
+    function openMessage(offrantID, userID) {
+        var offrant = offrantID;
+        var user = userID;
+
+        $.ajax({
+            type: "POST",
+            url: "/Products/getProductDetails",
+            data: form,
+            datatype: "html",
+            success: function (data) {
+                alert("success");
+                $("#ajaxResult").html(data);
+            }
+        })
+    }
+
+</script>
+
 <h2>Index</h2>
 
 <p>
@@ -45,10 +65,13 @@
             @Html.DisplayFor(modelItem => item.Offrant.Region)
         </td>
         <td>
+            <a onclick="openMessage(@item.OffrantID +' '+@Session["UserID"])" style="cursor:pointer;">Envoyer Message</a>
+        </td>
+        @*<td>
             @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
             @Html.ActionLink("Details", "Details", new { id=item.ID }) |
             @Html.ActionLink("Delete", "Delete", new { id=item.ID })
-        </td>
+        </td>*@
     </tr>
 }
 
