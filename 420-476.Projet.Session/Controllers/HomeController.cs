@@ -35,6 +35,7 @@ namespace _420_476.Projet.Session.Controllers
                     {
                         Session["userRole"] = user.Role.Label;
                         Session["userName"] = user.Login;
+                        Session["UserID"] = user.ID;
                         return RedirectToAction("Index");
                     }
                     else
