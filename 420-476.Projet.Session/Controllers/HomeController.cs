@@ -85,6 +85,19 @@ namespace _420_476.Projet.Session.Controllers
         }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+        public void saveCookie()
+        {
+            string type = "";
+            foreach (string item in Request.Form)
+            {                
+                type = Request[item];
+            }
+            @Response.Cookies["typeOffre"].Value = type;
+            @Response.Cookies["typeOffre"].Expires = DateTime.Now.AddDays(7);
+=======
+>>>>>>> 2962e45c80512361c97c9a26755705a1eaa4c7c2
         public ActionResult Evolve()
         {
             using(Pet_CareEntities context = new Pet_CareEntities())
@@ -98,6 +111,7 @@ namespace _420_476.Projet.Session.Controllers
                 context.SaveChanges();
             }
             return RedirectToAction("Index");
+<<<<<<< HEAD
 =======
         public void saveCookie()
         {
@@ -109,6 +123,9 @@ namespace _420_476.Projet.Session.Controllers
             @Response.Cookies["typeOffre"].Value = type;
             @Response.Cookies["typeOffre"].Expires = DateTime.Now.AddDays(7);
 >>>>>>> e9ec799b88ba3a0b7402341704c115041f1261bf
+=======
+>>>>>>> 7617ecf227df5ff5d3f98858caaf7c680747776d
+>>>>>>> 2962e45c80512361c97c9a26755705a1eaa4c7c2
         }
     }
 }
