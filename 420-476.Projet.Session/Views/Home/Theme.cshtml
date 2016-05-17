@@ -2,6 +2,35 @@
 @{
     ViewBag.Title = "Theme";
 }
-
+<script>
+    function changeTheme() {
+        $.ajax({
+            type: "POST",
+            url: "/Home/saveCookie",
+            data: document.getElementById('themesList').value,
+            datatype: "html",
+            success: function (data) {
+                $("#table").fadeIn();
+                $("#back").fadeIn();
+                $("#messageDiv").fadeIn();
+            }
+        })
+    }
+</script>
 <h2>Theme</h2>
-
+<div style="margin:10px auto;">
+    <table>
+        <tr>
+            <th>Choisir votre thème</th>
+        </tr>
+        <tr>
+            <td>
+                <select onchange="alert()" id="themesList">
+                    <option>Classique</option>
+                    <option>Rouge</option>
+                    <option>Bleu</option>
+                </select>
+            </td>
+        </tr>
+    </table>
+</div>

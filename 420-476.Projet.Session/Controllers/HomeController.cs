@@ -73,7 +73,6 @@ namespace _420_476.Projet.Session.Controllers
         }
         private bool CheckPassword(string dbHashedPassword, string UserUnhashedPassword)
         {
-
             return Crypto.VerifyHashedPassword(dbHashedPassword, UserUnhashedPassword);
         }
 
@@ -81,6 +80,7 @@ namespace _420_476.Projet.Session.Controllers
         {
             Session["userRole"] = null;
             Session["userName"] = null;
+            Session["UserID"] = null;
             return RedirectToAction("Index");
         }
 
