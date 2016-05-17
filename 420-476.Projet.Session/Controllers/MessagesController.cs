@@ -143,5 +143,44 @@ namespace _420_476.Projet.Session.Controllers
         {
             return View();
         }
+
+        public void ajaxCreateMessage()
+        {
+            int offrantID = -1;
+            int userID = -1;
+            string msg = "";
+            string sujet = "";
+            foreach (string item in Request.Form)
+            {
+                switch (item)
+                {
+                    case ("offrant"):
+                        offrantID = Int32.Parse(Request["offrant"]);
+                        break;
+                    case ("user"):
+                        userID = Int32.Parse(Request["user"]);
+                        break;
+                    case ("message"):
+                        msg = Request["message"].ToString();
+                        break;
+                    case ("sujet"):
+                        sujet = Request["sujet"].ToString();
+                        break;
+                }
+            }
+
+            Message message = new Message()
+            {
+                DateEnvoie = DateTime.Now,
+                FromUserID = userID,
+                ToUserID = offrantID,
+                Sujet = sujet,
+                Statut_lu = false,
+                Texte = msg
+            };
+
+            db.Messages.Add(message);
+            db.SaveChanges();            
+        }
     }
 }

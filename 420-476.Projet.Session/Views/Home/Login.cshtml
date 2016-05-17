@@ -7,7 +7,7 @@
 @Html.Label(ViewBag.errorMessage!=null ? (String)ViewBag.errorMessage : "", new { style="color:red;"})
 @using(Html.BeginForm("LoginIn","Home",FormMethod.Post))
 {
-    @Html.TextBox("UserName", "", new { placeholder="Utilisateur", style="margin-bottom:5px;"})<br />
+    @Html.TextBox("UserName", "", new { placeholder="Utilisateur", style="margin-bottom:5px;", autofocus = "autofocus" })<br />
     @Html.Password("Password", "", new { placeholder = "Mot de passe" })<br />
 
 <input id="Checkbox1" type="checkbox" />

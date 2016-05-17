@@ -73,7 +73,6 @@ namespace _420_476.Projet.Session.Controllers
         }
         private bool CheckPassword(string dbHashedPassword, string UserUnhashedPassword)
         {
-
             return Crypto.VerifyHashedPassword(dbHashedPassword, UserUnhashedPassword);
         }
 
@@ -81,9 +80,11 @@ namespace _420_476.Projet.Session.Controllers
         {
             Session["userRole"] = null;
             Session["userName"] = null;
+            Session["UserID"] = null;
             return RedirectToAction("Index");
         }
 
+<<<<<<< HEAD
         public ActionResult Evolve()
         {
             using(Pet_CareEntities context = new Pet_CareEntities())
@@ -97,6 +98,17 @@ namespace _420_476.Projet.Session.Controllers
                 context.SaveChanges();
             }
             return RedirectToAction("Index");
+=======
+        public void saveCookie()
+        {
+            string type = "";
+            foreach (string item in Request.Form)
+            {                
+                type = Request[item];
+            }
+            @Response.Cookies["typeOffre"].Value = type;
+            @Response.Cookies["typeOffre"].Expires = DateTime.Now.AddDays(7);
+>>>>>>> e9ec799b88ba3a0b7402341704c115041f1261bf
         }
     }
 }
