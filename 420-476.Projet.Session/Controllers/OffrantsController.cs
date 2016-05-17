@@ -10,112 +10,112 @@ using _420_476.Projet.Session.Models;
 
 namespace _420_476.Projet.Session.Controllers
 {
-    public class AnimalsController : Controller
+    public class OffrantsController : Controller
     {
         private Pet_CareEntities db = new Pet_CareEntities();
 
-        // GET: Animals
+        // GET: Offrants
         public ActionResult Index()
         {
-            var animals = db.Animals.Include(a => a.Membre);
-            return View(animals.ToList());
+            var offrants = db.Offrants.Include(o => o.Membre);
+            return View(offrants.ToList());
         }
 
-        // GET: Animals/Details/5
+        // GET: Offrants/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Animal animal = db.Animals.Find(id);
-            if (animal == null)
+            Offrant offrant = db.Offrants.Find(id);
+            if (offrant == null)
             {
                 return HttpNotFound();
             }
-            return View(animal);
+            return View(offrant);
         }
 
-        // GET: Animals/Create
+        // GET: Offrants/Create
         public ActionResult Create()
         {
             ViewBag.MembreID = new SelectList(db.Membres, "UserID", "FirstName");
             return View();
         }
 
-        // POST: Animals/Create
+        // POST: Offrants/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,MembreID,Nom,Race,Age,Besoins,Etat")] Animal animal)
+        public ActionResult Create([Bind(Include = "MembreID,Region,AverageRating")] Offrant offrant)
         {
             if (ModelState.IsValid)
             {
-                db.Animals.Add(animal);
+                db.Offrants.Add(offrant);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.MembreID = new SelectList(db.Membres, "UserID", "FirstName", animal.MembreID);
-            return View(animal);
+            ViewBag.MembreID = new SelectList(db.Membres, "UserID", "FirstName", offrant.MembreID);
+            return View(offrant);
         }
 
-        // GET: Animals/Edit/5
+        // GET: Offrants/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Animal animal = db.Animals.Find(id);
-            if (animal == null)
+            Offrant offrant = db.Offrants.Find(id);
+            if (offrant == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.MembreID = new SelectList(db.Membres, "UserID", "FirstName", animal.MembreID);
-            return View(animal);
+            ViewBag.MembreID = new SelectList(db.Membres, "UserID", "FirstName", offrant.MembreID);
+            return View(offrant);
         }
 
-        // POST: Animals/Edit/5
+        // POST: Offrants/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,MembreID,Nom,Race,Age,Besoins,Etat")] Animal animal)
+        public ActionResult Edit([Bind(Include = "MembreID,Region,AverageRating")] Offrant offrant)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(animal).State = EntityState.Modified;
+                db.Entry(offrant).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.MembreID = new SelectList(db.Membres, "UserID", "FirstName", animal.MembreID);
-            return View(animal);
+            ViewBag.MembreID = new SelectList(db.Membres, "UserID", "FirstName", offrant.MembreID);
+            return View(offrant);
         }
 
-        // GET: Animals/Delete/5
+        // GET: Offrants/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Animal animal = db.Animals.Find(id);
-            if (animal == null)
+            Offrant offrant = db.Offrants.Find(id);
+            if (offrant == null)
             {
                 return HttpNotFound();
             }
-            return View(animal);
+            return View(offrant);
         }
 
-        // POST: Animals/Delete/5
+        // POST: Offrants/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Animal animal = db.Animals.Find(id);
-            db.Animals.Remove(animal);
+            Offrant offrant = db.Offrants.Find(id);
+            db.Offrants.Remove(offrant);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
@@ -127,6 +127,11 @@ namespace _420_476.Projet.Session.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+        public ActionResult Update(int id)
+        {
+            return View("Update");
         }
     }
 }

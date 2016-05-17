@@ -137,5 +137,15 @@ namespace _420_476.Projet.Session.Controllers
         {
             return View();
         }
+
+        public PartialViewResult PartialMembre(int id)
+        {
+            using(Pet_CareEntities db = new Pet_CareEntities())
+            {
+                var membre = db.Membres.Where(x => x.UserID == id).FirstOrDefault();
+                return PartialView(membre);
+            }
+            
+        }
     }
 }

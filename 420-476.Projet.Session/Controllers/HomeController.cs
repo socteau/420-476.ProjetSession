@@ -84,6 +84,7 @@ namespace _420_476.Projet.Session.Controllers
             return RedirectToAction("Index");
         }
 
+<<<<<<< HEAD
         public void saveCookie()
         {
             string type = "";
@@ -93,6 +94,21 @@ namespace _420_476.Projet.Session.Controllers
             }
             @Response.Cookies["typeOffre"].Value = type;
             @Response.Cookies["typeOffre"].Expires = DateTime.Now.AddDays(7);
+=======
+        public ActionResult Evolve()
+        {
+            using(Pet_CareEntities context = new Pet_CareEntities())
+            {
+                string log = Session["username"].ToString();
+                var user = context.Users.Where(x => x.Login == log).FirstOrDefault();
+                var role = context.Roles.Where(x => x.ID == 4).FirstOrDefault();
+                user.Role = role;
+                Session["userRole"] = role.Label;
+
+                context.SaveChanges();
+            }
+            return RedirectToAction("Index");
+>>>>>>> 7617ecf227df5ff5d3f98858caaf7c680747776d
         }
     }
 }
