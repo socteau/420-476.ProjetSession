@@ -33,8 +33,9 @@
                         </li>
                         if (Session["userRole"].Equals("Membre") || Session["userRole"].Equals("Offrant"))
                         {
-                            <li>
-                                @Html.ActionLink("Devenir Offrant", "Index", "Home")
+                            <li><!--Changement du lien-->
+                                @*@Html.ActionLink("Devenir Offrant", "Evolve", "Home")*@
+                                <a onclick="if(confirm('Souhaitez vous reellement devenir un offrant de services pour Pet-Care')@Html.ActionLink("Devenir Offrant", "Evolve", "Home"))"></a>
                             </li>
                             <li>
                                 @Html.ActionLink("Consulter les offres", "Index", "Services")

@@ -82,5 +82,18 @@ namespace _420_476.Projet.Session.Controllers
             Session["userName"] = null;
             return RedirectToAction("Index");
         }
+
+        public ActionResult Evolve()
+        {
+            using(Pet_CareEntities context = new Pet_CareEntities())
+            {
+                string log = Session["username"].ToString();
+                var user = context.Users.Where(x => x.Login == log).FirstOrDefault();
+                var role = context.Roles.Where(x => x.ID == 4).FirstOrDefault();
+                user.Role = role;
+                context.SaveChanges();
+            }
+            return RedirectToAction("Index");
+        }
     }
 }
