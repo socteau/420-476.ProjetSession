@@ -55,7 +55,7 @@ namespace _420_476.Projet.Session.Controllers
             {
                 db.Membres.Add(membre);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index","Home");
             }
 
             ViewBag.UserID = new SelectList(db.Users, "ID", "Login", membre.UserID);
@@ -66,6 +66,8 @@ namespace _420_476.Projet.Session.Controllers
         // GET: Membres/Edit/5
         public ActionResult Edit(int? id)
         {
+            if (Session["UserID"].ToString() != null && id == null)
+                id = int.Parse(Session["UserID"].ToString());
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -136,16 +138,6 @@ namespace _420_476.Projet.Session.Controllers
         public ActionResult ConsulterOffres()
         {
             return View();
-        }
-
-        public PartialViewResult PartialMembre(int id)
-        {
-            using(Pet_CareEntities db = new Pet_CareEntities())
-            {
-                var membre = db.Membres.Where(x => x.UserID == id).FirstOrDefault();
-                return PartialView(membre);
-            }
-            
         }
     }
 }

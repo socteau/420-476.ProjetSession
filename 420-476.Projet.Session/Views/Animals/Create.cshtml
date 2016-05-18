@@ -15,13 +15,16 @@
         <h4>Animal</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
+
+        @{ var memberId = int.Parse(Session["UserID"].ToString());}
+        @Html.TextBoxFor(model => memberId, new { style="display:none;"})
+        @*<div class="form-group">
             @Html.LabelFor(model => model.MembreID, "MembreID", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                html.dropdownlist("membreid", null, htmlattributes: new { @class = "form-control" })
+                @Html.DropDownList("MembreID", null, htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.MembreID, "", new { @class = "text-danger" })
             </div>
-        </div>
+        </div>*@
 
         <div class="form-group">
             @Html.LabelFor(model => model.Nom, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -42,7 +45,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Age, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Age, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.Age, new { id="numbers", htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Age, "", new { @class = "text-danger" })
             </div>
         </div>

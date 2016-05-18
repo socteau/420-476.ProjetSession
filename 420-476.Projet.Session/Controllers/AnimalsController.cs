@@ -18,6 +18,13 @@ namespace _420_476.Projet.Session.Controllers
         public ActionResult Index()
         {
             var animals = db.Animals.Include(a => a.Membre);
+            if (Session["UserID"].ToString() != null)
+            {
+                int id = int.Parse(Session["UserID"].ToString());
+                animals = animals.Where(x => x.MembreID == id);
+            }
+                
+            
             return View(animals.ToList());
         }
 
@@ -50,6 +57,8 @@ namespace _420_476.Projet.Session.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "ID,MembreID,Nom,Race,Age,Besoins,Etat")] Animal animal)
         {
+            animal.ID = db.Animals.Count() + 1;
+            animal.MembreID = int.Parse(Session["UserID"].ToString());
             if (ModelState.IsValid)
             {
                 db.Animals.Add(animal);

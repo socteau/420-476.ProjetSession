@@ -6,7 +6,6 @@
     <title>@ViewBag.Title - My ASP.NET Application</title>
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
-    @Styles.Render("~/Content/css")    
     @Scripts.Render("~/bundles/modernizr")
     <script src="http://cdn.jsdelivr.net/jquery.validation/1.15.0/jquery.validate.min.js"></script>
     <script src="http://cdn.jsdelivr.net/jquery.validation/1.15.0/additional-methods.min.js"></script>
@@ -20,24 +19,21 @@
                 }
             })
         });
-        //$('#offreant').click(function () {
-        //    return confirm("Souhaitez vous reellement devenir un offrant de services pour Pet-Care");
-        //})
     </script>
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top" style="height:100px;overflow-y:scroll;">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+    <div>
+        <div>
+            <div>
+                <button>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
                 @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
+            <div>
+                <ul>
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
                     <li>@Html.ActionLink("Contactez nous", "Contact", "Home")</li>
                     @if (Session["userRole"] != null)
@@ -53,8 +49,6 @@
                             if (!Session["userRole"].Equals("Offrant"))
                             {
                                 <li>
-                                    <!--Changement du lien-->
-                                    @*@Html.ActionLink("Devenir Offrant", "Evolve", "Home")*@
                                     <a id="offreant" href="~/Home/Evolve">Devenir Offreant</a>
                                 </li>
                             }
@@ -118,11 +112,11 @@
             </div>
         </div>
     </div>
-    <div class="container body-content">
+    <div>
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            <p>&copy; @DateTime.Now.Year - Pet-Care</p>
         </footer>
     </div>
 

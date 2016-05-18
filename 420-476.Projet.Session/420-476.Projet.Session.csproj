@@ -351,7 +351,6 @@
     <Content Include="Views\Messages\Plainte.cshtml" />
     <Content Include="Views\Messages\GererPlaintes.cshtml" />
     <Content Include="Views\Gestion\Rapport.cshtml" />
-    <Content Include="Views\Gestion\GererProfils.cshtml" />
     <Content Include="Views\ServicesRatings\Create.cshtml" />
     <Content Include="Views\ServicesRatings\Delete.cshtml" />
     <Content Include="Views\ServicesRatings\Details.cshtml" />
@@ -367,6 +366,10 @@
     <Content Include="Views\Offrants\Details.cshtml" />
     <Content Include="Views\Offrants\Edit.cshtml" />
     <Content Include="Views\Offrants\Index.cshtml" />
+    <Content Include="Views\Gestion\GererProfils.cshtml" />
+    <Content Include="Views\Gestion\Edit.cshtml" />
+    <Content Include="Views\Services\MesOffres.cshtml" />
+    <Content Include="Views\Shared\_MyLayout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

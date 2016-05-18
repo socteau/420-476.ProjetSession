@@ -12,6 +12,8 @@ namespace _420_476.Projet.Session.Controllers
     public class HomeController : Controller
     {
         private static string errorMessage = null;
+        private Pet_CareEntities db = new Pet_CareEntities();
+
         public ActionResult Login()
         {
             string message = errorMessage;
@@ -84,48 +86,33 @@ namespace _420_476.Projet.Session.Controllers
             return RedirectToAction("Index");
         }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
         public void saveCookie()
         {
             string type = "";
             foreach (string item in Request.Form)
-            {                
+            {
                 type = Request[item];
             }
             @Response.Cookies["typeOffre"].Value = type;
             @Response.Cookies["typeOffre"].Expires = DateTime.Now.AddDays(7);
-=======
->>>>>>> 2962e45c80512361c97c9a26755705a1eaa4c7c2
+        }
+
         public ActionResult Evolve()
         {
-            using(Pet_CareEntities context = new Pet_CareEntities())
+            int id = Int32.Parse(Session["UserID"].ToString());
+            var user = db.Users.Where(x => x.ID == id).FirstOrDefault();
+            var role = db.Roles.Where(x => x.ID == 4).FirstOrDefault();
+            user.Role = role;
+            Session["userRole"] = role.Label;
+            Offrant offrant = new Offrant()
             {
-                string log = Session["username"].ToString();
-                var user = context.Users.Where(x => x.Login == log).FirstOrDefault();
-                var role = context.Roles.Where(x => x.ID == 4).FirstOrDefault();
-                user.Role = role;
-                Session["userRole"] = role.Label;
-
-                context.SaveChanges();
-            }
-            return RedirectToAction("Index");
-<<<<<<< HEAD
-=======
-        public void saveCookie()
-        {
-            string type = "";
-            foreach (string item in Request.Form)
-            {                
-                type = Request[item];
-            }
-            @Response.Cookies["typeOffre"].Value = type;
-            @Response.Cookies["typeOffre"].Expires = DateTime.Now.AddDays(7);
->>>>>>> e9ec799b88ba3a0b7402341704c115041f1261bf
-=======
->>>>>>> 7617ecf227df5ff5d3f98858caaf7c680747776d
->>>>>>> 2962e45c80512361c97c9a26755705a1eaa4c7c2
+                MembreID = id,
+                Region = "",
+                AverageRating = 0
+            };
+            db.Offrants.Add(offrant);
+            db.SaveChanges();
+            return RedirectToAction("Edit","Offrants", new { id });
         }
     }
 }

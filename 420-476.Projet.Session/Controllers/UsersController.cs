@@ -85,6 +85,8 @@ namespace _420_476.Projet.Session.Controllers
         // GET: Users/Edit/5
         public ActionResult Edit(int? id)
         {
+            if (Session["UserID"].ToString() != null && id == null)
+                id = int.Parse(Session["UserID"].ToString());
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -108,11 +110,7 @@ namespace _420_476.Projet.Session.Controllers
         {
             if (ModelState.IsValid)
             {
-                //int id = Int32.Parse(Session["UserID"].ToString());
-                var dbUser = db.Users.Where(x => x.ID == 1013).FirstOrDefault();
-                user.ID = dbUser.ID;
-                user.RoleID = dbUser.RoleID;
-                user.Statut_disponible = dbUser.Statut_disponible;
+                
                 if (!SamePassword(user.ID, user.Password))
                 {
                     user.Password = Crypto.HashPassword(user.Password);
@@ -190,6 +188,9 @@ namespace _420_476.Projet.Session.Controllers
             using(Pet_CareEntities db = new Pet_CareEntities())
             {
                 var hashPwd = db.Users.Where(x => x.ID == id).FirstOrDefault().Password;
+                if (hashPwd == null)
+                    return false;
+                int test = 42;
                 return hashPwd.Equals(password);
             }
         }

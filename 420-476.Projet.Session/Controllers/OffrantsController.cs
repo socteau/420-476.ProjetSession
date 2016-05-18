@@ -54,7 +54,7 @@ namespace _420_476.Projet.Session.Controllers
             {
                 db.Offrants.Add(offrant);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index","Home");
             }
 
             ViewBag.MembreID = new SelectList(db.Membres, "UserID", "FirstName", offrant.MembreID);
@@ -64,6 +64,8 @@ namespace _420_476.Projet.Session.Controllers
         // GET: Offrants/Edit/5
         public ActionResult Edit(int? id)
         {
+            if(Session["UserID"].ToString() != null && id == null)
+                id = int.Parse(Session["UserID"].ToString());
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -127,11 +129,6 @@ namespace _420_476.Projet.Session.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
-        }
-
-        public ActionResult Update(int id)
-        {
-            return View("Update");
         }
     }
 }

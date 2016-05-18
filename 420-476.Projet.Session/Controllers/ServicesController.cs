@@ -18,7 +18,7 @@ namespace _420_476.Projet.Session.Controllers
         // GET: Services
         public ActionResult Index()
         {
-            var services = db.Services.Include(s => s.Offrant).ToList();
+            var services = db.Services.Where(x => x.Statut_actif == true).Include(s => s.Offrant).ToList();
             services = NavigationController.Prep(services);
             return View(services.ToList());
         }
@@ -42,6 +42,18 @@ namespace _420_476.Projet.Session.Controllers
         public ActionResult Create()
         {
             ViewBag.OffrantID = new SelectList(db.Offrants, "MembreID", "Region");
+            var items = new List<SelectListItem>();
+            items.Add(new SelectListItem { Text = "Autre", Value = "Autre" });
+            items.Add(new SelectListItem { Text = "Garderie", Value = "Garderie" });
+            items.Add(new SelectListItem { Text = "Nourriture", Value = "Nourriture" });
+            items.Add(new SelectListItem { Text = "Photo", Value = "Photo" });
+            items.Add(new SelectListItem { Text = "Promenage", Value = "Promenage" });
+            items.Add(new SelectListItem { Text = "Tonte", Value = "Tonte" });
+            items.Add(new SelectListItem { Text = "Tonte et toilettage", Value = "Tonte et toilettage" });
+            items.Add(new SelectListItem { Text = "Toilettage", Value = "Toilettage" });
+            items.Add(new SelectListItem { Text = "Transport", Value = "Transport" });
+            ViewBag.Type = items;
+            
             return View();
         }
 
@@ -50,7 +62,7 @@ namespace _420_476.Projet.Session.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,OffrantID,Label,Type,Prix")] Service service)
+        public ActionResult Create([Bind(Include = "ID,OffrantID,Label,Type,Prix,Statut_actif")] Service service)
         {
             if (ModelState.IsValid)
             {
@@ -90,7 +102,7 @@ namespace _420_476.Projet.Session.Controllers
             {
                 db.Entry(service).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("MesOffres");
             }
             ViewBag.OffrantID = new SelectList(db.Offrants, "MembreID", "Region", service.OffrantID);
             return View(service);
@@ -129,6 +141,18 @@ namespace _420_476.Projet.Session.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+        public ActionResult MesOffres()
+        {
+            var services = db.Services.Include(s => s.Offrant).ToList();
+            if (Session["UserID"].ToString() != null)
+            {
+                int id = int.Parse(Session["UserID"].ToString());
+                services = db.Services.Include(s => s.Offrant).Where(x => x.OffrantID == id).ToList();
+            }
+            services = NavigationController.Prep(services);
+            return View(services.ToList());
         }
     }
 }
