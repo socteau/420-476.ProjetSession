@@ -19,7 +19,7 @@ namespace _420_476.Projet.Session.Controllers
         // GET: Users
         public ActionResult Index()
         {
-            var users = db.Users.Include(u => u.Membre).Include(u => u.Role).ToList();
+            var users = db.Users.Include(u => u.Membre).Include(u => u.Role);
             return View(users.ToList());
         }
 
@@ -57,11 +57,24 @@ namespace _420_476.Projet.Session.Controllers
             {
                 user.Role = db.Roles.Where(x =>x.ID==3).FirstOrDefault();
                 user.Statut_disponible = true;
-                user.Password = Crypto.HashPassword(user.Password);
-                db.Users.Add(user);
-                db.SaveChanges();
+                user.Password = Crypto.HashPassword(user.Password);                                
+                db.Users.Add(user);                
+                //db.SaveChanges();                
+                int MAXID = db.Users.Max(x => x.ID);                
+                User lastAdded = db.Users.Where(x => x.ID == MAXID).FirstOrDefault();
+                Membre membre = new Membre() { UserID=lastAdded.ID,
+                Address = "",
+                FirstName = "",
+                LastName= ""              
+                };
+                db.Membres.Add(membre);
+                //db.SaveChanges();
                 sendEmail(user);
-                return RedirectToAction("Index");
+                Session["userRole"] = user.Role.Label;
+                Session["userName"] = user.Login;
+                Session["UserID"] = lastAdded.ID;
+                return RedirectToAction("Create", "Membres");
+                //return RedirectToAction("Edit", "Membres", new { id = lastAdded.ID });
             }
 
             ViewBag.ID = new SelectList(db.Membres, "UserID", "FirstName", user.ID);
@@ -72,6 +85,8 @@ namespace _420_476.Projet.Session.Controllers
         // GET: Users/Edit/5
         public ActionResult Edit(int? id)
         {
+            if (Session["UserID"].ToString() != null && id == null)
+                id = int.Parse(Session["UserID"].ToString());
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -95,6 +110,11 @@ namespace _420_476.Projet.Session.Controllers
         {
             if (ModelState.IsValid)
             {
+                
+                if (!SamePassword(user.ID, user.Password))
+                {
+                    user.Password = Crypto.HashPassword(user.Password);
+                }
                 db.Entry(user).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -146,9 +166,9 @@ namespace _420_476.Projet.Session.Controllers
             MailMessage message = new MailMessage(from, to);
             message.Subject = "Welcome to Pet-Care.";
             message.Body = @"Welcome "+user.Login+"!\nWelcome to Pet-Care";
-            SmtpClient client = new SmtpClient("smtp-pulse.com");
+            SmtpClient client = new SmtpClient("smtp.sendgrid.net");
             client.Port = 2525;
-            client.Credentials = new System.Net.NetworkCredential("samuel.octeau@hotmail.com", "iCGYsNnjAk");
+            client.Credentials = new System.Net.NetworkCredential("azure_5689b4033a9d224a512b2c18edc6fff2@azure.com", "vachier#123");
             // Credentials are necessary if the server requires the client 
             // to authenticate before it will send e-mail on the client's behalf.
             //client.UseDefaultCredentials = true;
@@ -160,6 +180,18 @@ namespace _420_476.Projet.Session.Controllers
             {
                 Console.WriteLine("Exception caught in CreateTestMessage2(): {0}",
                             ex.ToString());
+            }
+        }
+
+        public bool SamePassword(int id, string password)
+        {
+            using(Pet_CareEntities db = new Pet_CareEntities())
+            {
+                var hashPwd = db.Users.Where(x => x.ID == id).FirstOrDefault().Password;
+                if (hashPwd == null)
+                    return false;
+                int test = 42;
+                return hashPwd.Equals(password);
             }
         }
     }

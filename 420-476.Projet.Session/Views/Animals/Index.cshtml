@@ -30,9 +30,9 @@
         <th>
             @Html.DisplayNameFor(model => model.Etat)
         </th>
-        <th>
+        @*<th>
             @Html.DisplayNameFor(model => model.Membre.FirstName)
-        </th>
+        </th>*@
         <th></th>
     </tr>
 
@@ -53,13 +53,13 @@
         <td>
             @Html.DisplayFor(modelItem => item.Etat)
         </td>
-        <td>
+        @*<td>
             @Html.DisplayFor(modelItem => item.Membre.FirstName)
-        </td>
+        </td>*@
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+            @Html.ActionLink("Details", "Details", new { id=item.ID }) @*|
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID })*@
         </td>
     </tr>
 }

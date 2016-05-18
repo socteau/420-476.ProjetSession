@@ -1,9 +1,10 @@
 ﻿@{
     ViewBag.Title = "Home Page";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <div class="jumbotron">
-    <h1>PET-CARE</h1>
+    <h1>BIENVENUE A PET-CARE</h1>
 </div>
 
 <div class="row">    
@@ -11,32 +12,4 @@
     {
         Html.Label(Session["userName"].ToString());
     }
-    @*@Html.ActionLink("Contactez nous", "Contact", "Home")<br />
-    @if (Session["userRole"] != null)
-    {
-        Html.ActionLink("Profil Personnel", "Profil", "Home");<br />
-        if (Session["userRole"].Equals("Member"))
-        {
-            Html.ActionLink("Devenir Offrant", "Index", "Home");<br />
-            Html.ActionLink("Consulter les offres", "Index", "Services");<br />
-            Html.ActionLink("Ajouter un animal", "Create", "Animals");<br />
-            Html.ActionLink("Modifier un animal", "Index", "Animals");<br />
-            Html.ActionLink("Faire une plainte", "Plainte", "Messages");<br />
-            Html.ActionLink("Rate un service", "Create", "ServicesRatings");<br />
-        }
-        if (Session["userRole"].Equals("Offrant"))
-        {
-            Html.ActionLink("Creer un offre", "Create", "Services");<br />
-            Html.ActionLink("Modifier un offre", "Index", "Services");<br />
-        }
-        if (Session["userRole"].Equals("Gestionnaire"))
-        {
-            Html.ActionLink("Gerer les plaintes", "GererPlaintes", "Messages");<br />
-        }
-        if (Session["userRole"].Equals("Admin"))
-        {
-            Html.ActionLink("Visualiser les rapports", "Rapport", "Gestion");<br />
-            Html.ActionLink("Gerer les profils", "GererProfils", "Gestion");<br />
-        }
-    }*@
 </div>

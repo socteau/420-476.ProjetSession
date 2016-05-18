@@ -12,6 +12,8 @@ namespace _420_476.Projet.Session.Controllers
     public class HomeController : Controller
     {
         private static string errorMessage = null;
+        private Pet_CareEntities db = new Pet_CareEntities();
+
         public ActionResult Login()
         {
             string message = errorMessage;
@@ -35,6 +37,7 @@ namespace _420_476.Projet.Session.Controllers
                     {
                         Session["userRole"] = user.Role.Label;
                         Session["userName"] = user.Login;
+                        Session["UserID"] = user.ID;
                         return RedirectToAction("Index");
                     }
                     else
@@ -72,7 +75,6 @@ namespace _420_476.Projet.Session.Controllers
         }
         private bool CheckPassword(string dbHashedPassword, string UserUnhashedPassword)
         {
-
             return Crypto.VerifyHashedPassword(dbHashedPassword, UserUnhashedPassword);
         }
 
@@ -80,7 +82,37 @@ namespace _420_476.Projet.Session.Controllers
         {
             Session["userRole"] = null;
             Session["userName"] = null;
+            Session["UserID"] = null;
             return RedirectToAction("Index");
+        }
+
+        public void saveCookie()
+        {
+            string type = "";
+            foreach (string item in Request.Form)
+            {
+                type = Request[item];
+            }
+            @Response.Cookies["typeOffre"].Value = type;
+            @Response.Cookies["typeOffre"].Expires = DateTime.Now.AddDays(7);
+        }
+
+        public ActionResult Evolve()
+        {
+            int id = Int32.Parse(Session["UserID"].ToString());
+            var user = db.Users.Where(x => x.ID == id).FirstOrDefault();
+            var role = db.Roles.Where(x => x.ID == 4).FirstOrDefault();
+            user.Role = role;
+            Session["userRole"] = role.Label;
+            Offrant offrant = new Offrant()
+            {
+                MembreID = id,
+                Region = "",
+                AverageRating = 0
+            };
+            db.Offrants.Add(offrant);
+            db.SaveChanges();
+            return RedirectToAction("Edit","Offrants", new { id });
         }
     }
 }
