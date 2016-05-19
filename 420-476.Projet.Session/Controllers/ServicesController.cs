@@ -19,6 +19,11 @@ namespace _420_476.Projet.Session.Controllers
         public ActionResult Index()
         {
             var services = db.Services.Where(x => x.Statut_actif == true).Include(s => s.Offrant).ToList();
+            if (Session["filtre"] != null)
+            {
+                var filtre = Session["filtre"].ToString();
+                services = db.Services.Where(x => x.Statut_actif == true).Where(x => x.Type == filtre).Include(s => s.Offrant).ToList();
+            }
             services = NavigationController.Prep(services);
             return View(services.ToList());
         }
@@ -193,6 +198,32 @@ namespace _420_476.Projet.Session.Controllers
             };
             db.ServicesRatings.Add(serviceRating);
             db.SaveChanges();
+        }
+
+        public ActionResult typesAutoComplete()
+        {
+            string term = Request.QueryString["term"].ToLower();
+            var items = new List<SelectListItem>();
+            items.Add(new SelectListItem { Text = "Autre", Value = "Autre" });
+            items.Add(new SelectListItem { Text = "Garderie", Value = "Garderie" });
+            items.Add(new SelectListItem { Text = "Nourriture", Value = "Nourriture" });
+            items.Add(new SelectListItem { Text = "Photo", Value = "Photo" });
+            items.Add(new SelectListItem { Text = "Promenage", Value = "Promenage" });
+            items.Add(new SelectListItem { Text = "Tonte", Value = "Tonte" });
+            items.Add(new SelectListItem { Text = "Tonte et toilettage", Value = "Tonte et toilettage" });
+            items.Add(new SelectListItem { Text = "Toilettage", Value = "Toilettage" });
+            items.Add(new SelectListItem { Text = "Transport", Value = "Transport" });
+            return Json(items, JsonRequestBehavior.AllowGet);
+        }
+
+
+        public ActionResult Research(string search)
+        {
+            Session["filtre"] = search;
+            //var services = db.Services.Where(x => x.Type == search).Where(x => x.Statut_actif == true).Include(s => s.Offrant).ToList();
+            //services = NavigationController.Prep(services);
+            //return View("Index",services.ToList());
+            return View("Index");
         }
     }
 }

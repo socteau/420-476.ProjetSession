@@ -1,8 +1,15 @@
 ﻿
 @{
     ViewBag.Title = "Theme";
+    Layout = "~/Views/Shared/_MyLayout.cshtml";
 }
 <script>
+    //$(document).ready(function (e) {
+    //    var theme = $.cookie("theme");
+    //    if (theme != null) {
+    //        $('link[href="~/Content/"')
+    //    }
+    //});
     function changeTheme() {
         $.ajax({
             type: "POST",
@@ -22,6 +29,7 @@
     <table>
         <tr>
             <th>Choisir votre thème</th>
+            <th></th>
         </tr>
         <tr>
             <td>
@@ -31,6 +39,10 @@
                     <option>Bleu</option>
                 </select>
             </td>
+            <td></td>
         </tr>
     </table>
+</div>
+<div>
+    @Html.ActionLink("Retour", "Edit", "Membres")
 </div>

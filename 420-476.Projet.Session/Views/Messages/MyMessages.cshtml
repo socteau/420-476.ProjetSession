@@ -2,7 +2,7 @@
 
 @{
     ViewBag.Title = "Mes Messages";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = "~/Views/Shared/_MyLayout.cshtml";
 }
 <h2>Mes Messages</h2>
 
@@ -50,6 +50,8 @@
         </li>
     </ul>
 }
-
+<div>
+    @Html.ActionLink("Retour", "Edit", "Membres")
+</div>
 
 @*</table>*@

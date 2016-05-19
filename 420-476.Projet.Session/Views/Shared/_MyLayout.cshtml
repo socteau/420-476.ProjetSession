@@ -6,15 +6,15 @@
     <title>@ViewBag.Title - My ASP.NET Application</title>
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
-        @Scripts.Render("~/bundles/modernizr")
-        <link href="~/Content/MyCSS.css" rel="stylesheet" />
+    @Scripts.Render("~/bundles/modernizr")
+    <link href="~/Content/MyCSS.css" rel="stylesheet" />
     <script src="http://cdn.jsdelivr.net/jquery.validation/1.15.0/jquery.validate.min.js"></script>
     <script src="http://cdn.jsdelivr.net/jquery.validation/1.15.0/additional-methods.min.js"></script>
     <script type="text/javascript">
         $(document).ready(function () {
             $("#offreant").click(function (e) {
                 e.preventDefault();
-                var r = confirm("BLA BLA");
+                var r = confirm("Souhaitez-vous réellement devenir un offrant de services associé à Pet-Care");
                 if (r) {
                     window.location = $(this).attr('href');
                 }
@@ -25,17 +25,6 @@
 <body>
     <div>
         <div class="header">
-            @*<div>
-                @*<button>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>*@
-                @*<a href="/">
-                    <img src="~/Content/images/6TpLAg87c.png" alt="Pet-Care" width="50" height="50" />
-                </a>*@
-                @*@Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })*@
-            @*</div>*@
             <div class="test">
                 <ul>
                     <li>
@@ -44,16 +33,16 @@
                         </a>
                     </li>
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("Contactez nous", "Contact", "Home")</li>
+                    
                     @if (Session["userRole"] != null)
                     {
-                        <li>
+                        @*<li>
                             @Html.ActionLink("Modifier informations personnelles", "Edit", "Users")
-                        </li>
+                        </li>*@
                         if (Session["userRole"].Equals("Membre") || Session["userRole"].Equals("Offrant"))
                         {
                             <li>
-                                @Html.ActionLink("Profil Personnel", "Edit", "Membres");
+                                @Html.ActionLink("Profil Personnel", "Edit", "Membres")
                             </li>
                             if (!Session["userRole"].Equals("Offrant"))
                             {
@@ -70,9 +59,9 @@
                             <li>
                                 @Html.ActionLink("Modifier un animal", "Index", "Animals")
                             </li>
-                            <li>
+                            @*<li>
                                 @Html.ActionLink("Faire une plainte", "Plainte", "Messages")
-                            </li>
+                            </li>*@
                             <li>
                                 @Html.ActionLink("Rate un service", "Index", "ServicesRatings")
                             </li>
@@ -80,19 +69,19 @@
                         if (Session["userRole"].Equals("Offrant"))
                         {
                             <li>
-                                @Html.ActionLink("Creer un offre", "Create", "Services")
+                                @Html.ActionLink("Créer un offre", "Create", "Services")
                             </li>
                             <li>
                                 @Html.ActionLink("Modifier un offre", "MesOffres", "Services")
                             </li>
                             <li>
-                                @Html.ActionLink("Choisir votre region d'activite", "Edit", "Offrants")
+                                @Html.ActionLink("Choisir votre région d'activité", "Edit", "Offrants")
                             </li>
                         }
                         if (Session["userRole"].Equals("Gestionnaire"))
                         {
                             <li>
-                                @Html.ActionLink("Gerer les plaintes", "GererPlaintes", "Messages")
+                                @Html.ActionLink("Gérer les plaintes", "GererPlaintes", "Messages")
                             </li>
                         }
                         if (Session["userRole"].Equals("Administrateur"))
@@ -101,11 +90,12 @@
                                 @Html.ActionLink("Visualiser les rapports", "Rapport", "Gestion")
                             </li>
                             <li>
-                                @Html.ActionLink("Gerer les profils", "GererProfils", "Gestion")
+                                @Html.ActionLink("Gérer les profils", "GererProfils", "Gestion")
                             </li>
                         }
+                        <li>@Html.ActionLink("Contactez nous", "Contact", "Home")</li>
                         <li>
-                            @Html.ActionLink("Déconnecter", "LoginOut", "Home");
+                            @Html.ActionLink("Déconnecter", "LoginOut", "Home")
                         </li>
                     }
                     else
@@ -116,6 +106,7 @@
                         <li>
                             @Html.ActionLink("Créer un compte", "Create", "Users")
                         </li>
+                        <li>@Html.ActionLink("Contactez nous", "Contact", "Home")</li>
                     }
                 </ul>
             </div>

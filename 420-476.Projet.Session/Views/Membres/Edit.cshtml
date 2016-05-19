@@ -2,6 +2,7 @@
 
 @{
     ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_MyLayout.cshtml";
 }
 
 <h2>Edit</h2>
@@ -50,7 +51,10 @@
 }
 
 <div>
-    @Html.ActionLink("Retour", "Index","Home")
+    @Html.ActionLink("Retour", "Index", "Home") |
+    @Html.ActionLink("Choisir un thème","Theme","Home") |
+    @Html.ActionLink("Boite de réception", "MyMessages", "Messages") |
+    @Html.ActionLink("Modifier informations personnelles", "Edit", "Users")
 </div>
 
 @section Scripts {

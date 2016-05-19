@@ -11,7 +11,7 @@ namespace _420_476.Projet.Session.Controllers
         private static string actual = "Index";
         //private static string master = "";
         private static int start = 0;
-        private static int itemsPerPage = 20;
+        private static int itemsPerPage = 15;
         private static int end;
 
         public static List<T> Prep<T>(IEnumerable<T> list)

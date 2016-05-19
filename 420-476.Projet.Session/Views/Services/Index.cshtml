@@ -2,6 +2,7 @@
 
 @{
     ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_MyLayout.cshtml";
 }
 <style>#pub footer{display:none;}</style>
 <script type="text/javascript">
@@ -78,10 +79,26 @@
     function fadeI() {
         $("#pub").fadeIn();
     }
+
+    $(document).ready(function(){
+        $('#search').autocomplete({
+            source: '@Url.Action("typesAutoComplete")'
+        });
+    })
+
 </script>
+<div id="pubHolder" style="margin:10px;padding:3px;">
+    <h3>Services qui pourraient vous intéresser</h3>
+    <div style="height:50px;">
+        <div id="pub">
+            @Html.Partial("~/Views/Services/publicite.cshtml")
+        </div>
+    </div>
+</div>
+<hr/>
 <h2>Index</h2>
-<div id="back" style="position:absolute;display:none;background-color:rgba(0,0,0,0.8);width:100%;height:100%;top:0;left:0;z-index:999999999;" onclick="cancel();"></div>
-<div id="messageDiv" style="display:none;position:absolute;padding:0px 25px 25px 25px;margin:15%;background-color:lightgray;border:1px solid black;z-index:9999999999;">
+<div id="back" onclick="cancel();"></div>
+<div id="messageDiv">
     <div id="successDiv" style="display:none;margin:auto;">
         <h2>Message envoyé avec succès</h2>
         <input type="button" onclick="cancel()" value="Fermer" />
@@ -94,7 +111,7 @@
                     <span style="font-weight:bolder;">OFFRE:</span>
                 </td>
                 <td>
-                    <span id="offreLabel" style="text-decoration:underline;"></span>
+                    <span id="offreLabel"></span>
                 </td>
             </tr>
             <tr>
@@ -106,7 +123,7 @@
                 </td>
             </tr>
             <tr>
-                <td>
+                <td style="vertical-align:text-top;">
                     @Html.Label("Message: ", new { style = "font-weight:bolder;" })
                 </td>
                 <td>
@@ -124,21 +141,29 @@
         </table>
     </div>
 </div>    
-<div id="pubHolder" style="margin:10px;padding:3px;">
+@*<div id="pubHolder" style="margin:10px;padding:3px;">
     <h3>Services qui pourraient vous intéresser</h3>
     <div style="height:75px;">
         <div id="pub">
             @Html.Partial("~/Views/Services/publicite.cshtml")
         </div>
     </div>
-</div>
-<p>
+</div>*@
+@*<p>
     @Html.ActionLink("Create New", "Create")
-</p>
+</p>*@
 <div>
-    @Html.ActionLink("Precedent", "PreviousServices", "Navigation")
+    @Html.ActionLink("Precedent", "PreviousServices", "Navigation") |
     @Html.ActionLink("Suivant", "NextServices", "Navigation")
 </div>
+
+<div class="rightAlign">
+        @using (Html.BeginForm("Research", "Services", FormMethod.Post))
+        {
+            @Html.TextBox("search")
+        }
+</div>
+
 <table class="table">
     <tr>
         <th>
