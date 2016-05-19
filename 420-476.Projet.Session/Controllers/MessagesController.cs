@@ -34,6 +34,9 @@ namespace _420_476.Projet.Session.Controllers
             {
                 return HttpNotFound();
             }
+            Message getMessage = db.Messages.Where(x => x.ID == message.ID).FirstOrDefault();
+            getMessage.Statut_lu = true;
+            db.SaveChanges();
             return View(message);
         }
 
@@ -182,5 +185,18 @@ namespace _420_476.Projet.Session.Controllers
             db.Messages.Add(message);
             db.SaveChanges();            
         }
+
+        public ActionResult MyMessages()
+        {
+            var messages = db.Messages.Include(m => m.User).Include(m => m.User1).ToList();
+            if (Session["UserID"].ToString() != null)
+            {
+                int id = int.Parse(Session["UserID"].ToString());
+                messages = db.Messages.Where(x => x.ToUserID == id).ToList();
+            }
+            //messages = NavigationController.Prep(messages);
+            return View(messages.ToList());
+        }
+
     }
 }

@@ -66,9 +66,11 @@ namespace _420_476.Projet.Session.Controllers
         {
             if (ModelState.IsValid)
             {
+                service.OffrantID = Int32.Parse(Session["UserID"].ToString());
+                service.Statut_actif = true;
                 db.Services.Add(service);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("MesOffres");
             }
 
             ViewBag.OffrantID = new SelectList(db.Offrants, "MembreID", "Region", service.OffrantID);

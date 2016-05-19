@@ -59,7 +59,7 @@ namespace _420_476.Projet.Session.Controllers
                 user.Statut_disponible = true;
                 user.Password = Crypto.HashPassword(user.Password);                                
                 db.Users.Add(user);                
-                //db.SaveChanges();                
+                db.SaveChanges();                
                 int MAXID = db.Users.Max(x => x.ID);                
                 User lastAdded = db.Users.Where(x => x.ID == MAXID).FirstOrDefault();
                 Membre membre = new Membre() { UserID=lastAdded.ID,
@@ -68,13 +68,12 @@ namespace _420_476.Projet.Session.Controllers
                 LastName= ""              
                 };
                 db.Membres.Add(membre);
-                //db.SaveChanges();
+                db.SaveChanges();
                 sendEmail(user);
                 Session["userRole"] = user.Role.Label;
                 Session["userName"] = user.Login;
-                Session["UserID"] = lastAdded.ID;
-                return RedirectToAction("Create", "Membres");
-                //return RedirectToAction("Edit", "Membres", new { id = lastAdded.ID });
+                Session["UserID"] = lastAdded.ID;                
+                return RedirectToAction("Edit", "Membres", new { id = lastAdded.ID });
             }
 
             ViewBag.ID = new SelectList(db.Membres, "UserID", "FirstName", user.ID);
@@ -117,7 +116,7 @@ namespace _420_476.Projet.Session.Controllers
                 }
                 db.Entry(user).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index","Home");
             }
             ViewBag.ID = new SelectList(db.Membres, "UserID", "FirstName", user.ID);
             ViewBag.RoleID = new SelectList(db.Roles, "ID", "Label", user.RoleID);
@@ -190,7 +189,7 @@ namespace _420_476.Projet.Session.Controllers
                 var hashPwd = db.Users.Where(x => x.ID == id).FirstOrDefault().Password;
                 if (hashPwd == null)
                     return false;
-                int test = 42;
+                //int test = 42;
                 return hashPwd.Equals(password);
             }
         }

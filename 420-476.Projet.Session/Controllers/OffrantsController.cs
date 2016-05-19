@@ -90,7 +90,7 @@ namespace _420_476.Projet.Session.Controllers
             {
                 db.Entry(offrant).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index","Home");
             }
             ViewBag.MembreID = new SelectList(db.Membres, "UserID", "FirstName", offrant.MembreID);
             return View(offrant);
