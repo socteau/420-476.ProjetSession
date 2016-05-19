@@ -3,7 +3,108 @@
 @{
     ViewBag.Title = "Details";
 }
+<script type="text/javascript">
+    var offrantVar;
+    var userVar;
 
+    function openMessage(offrantID, userID, sujetOffre) {
+        offrantVar = offrantID;
+        userVar = userID;
+
+        document.getElementById('messageTextArea').value = "";
+        document.getElementById('sujet').value = "RE:"+sujetOffre
+        $("#table").fadeIn();
+        $("#back").fadeIn();
+        $("#messageDiv").fadeIn();
+    }
+
+    function sendMessage() {
+        var message = {
+            offrant: offrantVar,
+            user: userVar,
+            message: document.getElementById('messageTextArea').value,
+            sujet: document.getElementById('sujet').value
+        }
+
+        $.ajax({
+            type: "POST",
+            url: "/Messages/ajaxCreateMessage",
+            data: message,
+            datatype: "html",
+            success: function (data) {
+                cancel();
+                setTimeout(confirmMessate, 500);
+            }
+        })
+    }
+
+    function accepterService(OffrantID,UserID,ServiceID) {
+        var service = {
+            offrant: OffrantID,
+            user: UserID,
+            serviceID: ServiceID
+        }
+
+        $.ajax({
+            type: "POST",
+            url: "/Services/accepterService",
+            data: service,
+            datatype: "html",
+            success: function (data) {
+                alert('L\'offre a été accepté');
+            }
+        })
+    }
+
+    function cancel() {
+        $("#messageDiv").fadeOut();
+        $("#successDiv").fadeOut();
+        $("#back").fadeOut();
+        $("#table").fadeOut();
+    }
+
+    function confirmMessate() {
+        $("#back").fadeIn();
+        $("#messageDiv").fadeIn();
+        $("#successDiv").fadeIn();
+    }
+</script>
+<div id="back" style="position:absolute;display:none;background-color:rgba(0,0,0,0.8);width:100%;height:100%;top:0;left:0;z-index:999999999;" onclick="cancel();"></div>
+<div id="messageDiv" style="display:none;position:absolute;padding:0px 25px 25px 25px;margin:15%;background-color:lightgray;border:1px solid black;z-index:9999999999;">
+    <div id="successDiv" style="display:none;margin:auto;">
+        <h2>Message envoyé avec succès</h2>
+        <input type="button" onclick="cancel()" value="Fermer" />
+    </div>
+    <div id="table" style="display:none;">
+        <h2>Envoyer un message</h2>
+        <table>
+            <tr>
+                <td>
+                    @Html.Label("Sujet: ", new { style = "font-weight:bolder;" })
+                </td>
+                <td>
+                    <input type="text" id="sujet" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.Label("Message: ", new { style = "font-weight:bolder;" })
+                </td>
+                <td>
+                    <textarea style="resize:none;width:500px;height:250px;" id="messageTextArea"></textarea>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="button" onclick="sendMessage()" value="Envoyer" />
+                </td>
+                <td>
+                    <input type="button" onclick="cancel()" value="Annuler" />
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
 <h2>Details</h2>
 
 <div>
@@ -11,13 +112,26 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
+            @Html.DisplayNameFor(model => model.DateEnvoie)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateEnvoie)
+        </dd>
+        <dt>
             @Html.DisplayNameFor(model => model.Sujet)
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.Sujet)
         </dd>
+        <dt>
+            @Html.Label("Envoyé par")
+        </dt>
 
+        <dd>
+            @Html.DisplayFor(model => model.User.Login)
+        </dd>
         <dt>
             @Html.DisplayNameFor(model => model.Texte)
         </dt>
@@ -25,42 +139,16 @@
         <dd>
             @Html.DisplayFor(model => model.Texte)
         </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.DateEnvoie)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.DateEnvoie)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Statut_lu)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Statut_lu)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.User.Login)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.User.Login)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.User1.Login)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.User1.Login)
-        </dd>
-
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Retour", "MyMessages") |
+    <a onclick="openMessage(@Html.DisplayFor(model => model.User.ID), @Session["USerID"],'@Html.DisplayFor(model => model.Sujet)')" style="cursor:pointer;">Répondre</a>
+    @if (@Html.DisplayFor(model => model.Sujet).ToString().Length > 6)
+    {
+        if (@Html.DisplayFor(model => model.Sujet).ToString().Substring(0, 5).Equals("OFFRE"))
+        {
+            <a onclick="accepterService(@Session["UserID"],@Html.DisplayFor(model => model.User.ID),@Html.DisplayFor(model => model.Sujet).ToString().Substring(8))" style="cursor:pointer;"> | Accepter</a>
+        }
+    }
 </p>

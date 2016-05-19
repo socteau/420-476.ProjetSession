@@ -4,7 +4,6 @@
     ViewBag.Title = "Mes Messages";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
 <h2>Mes Messages</h2>
 
 @*<p>
@@ -29,7 +28,7 @@
 
 @foreach (var item in Model)
 {
-    <ul>
+    <ul style="list-style:none;">
         <li>
             @if (Html.DisplayFor(modelItem => item.Statut_lu).ToString().Equals("<input checked=\"checked\" class=\"check-box\" disabled=\"disabled\" type=\"checkbox\" />"))
             { <img src="../Content/Images/OpenedEnvelope.png" width="25px" height="25px" />}

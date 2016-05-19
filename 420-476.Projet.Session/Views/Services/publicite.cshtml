@@ -1,0 +1,41 @@
+﻿<div id="srvDiv">
+    <table style="width:100%; text-align:center;">
+        @using (_420_476.Projet.Session.Models.Pet_CareEntities db = new _420_476.Projet.Session.Models.Pet_CareEntities())
+        {
+            var items = db.Services.ToList();
+            string type = null;
+            if (Request.Cookies["typeOffre"] != null)
+            { type = Request.Cookies["typeOffre"].Value.ToString(); }
+
+            if (type != null)
+            {
+                items = items.Where(x => x.Type.Equals(type) && x.Statut_actif == true).ToList();
+            }
+            _420_476.Projet.Session.Models.Service service = null;
+            do
+            {
+                Random r = new Random();
+                int rInt = r.Next(1, items.Count);
+                service = items[rInt];
+            } while (service == null);
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => service.Label)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => service.Type)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => service.Prix)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => service.Offrant.Region)
+                </td>
+                <td>
+                    <a onclick="openMessage(@service.OffrantID,@Session["UserID"],'@service.Type','@service.Label')" style="cursor:pointer;">Envoyer Message</a>
+                </td>
+            </tr>
+        }
+    </table>
+</div>
+

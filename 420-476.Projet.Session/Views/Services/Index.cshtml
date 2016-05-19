@@ -3,18 +3,18 @@
 @{
     ViewBag.Title = "Index";
 }
-
+<style>#pub footer{display:none;}</style>
 <script type="text/javascript">
     var offrantVar;
-    var userVar;    
+    var userVar;
 
-    function openMessage(offrantID, userID, typeOffre, sujetOffre) {
+    function openMessage(offrantID, userID, typeOffre, sujetOffre, offreID) {
         offrantVar = offrantID;
         userVar = userID;
 
         document.getElementById('offreLabel').innerHTML = sujetOffre;
-        document.getElementById('messageTextArea').value = "";;
-        document.getElementById('sujet').value = "";;
+        document.getElementById('messageTextArea').value = "";
+        document.getElementById('sujet').value = "OFFRE - " + offreID;
         $.ajax({
             type: "POST",
             url: "/Home/saveCookie",
@@ -23,12 +23,12 @@
             success: function (data) {
                 $("#table").fadeIn();
                 $("#back").fadeIn();
-                $("#messageDiv").fadeIn();                
+                $("#messageDiv").fadeIn();
             }
         })
     }
 
-    function sendMessage() {        
+    function sendMessage() {
         var message = {
             offrant: offrantVar,
             user: userVar,
@@ -60,12 +60,29 @@
         $("#messageDiv").fadeIn();
         $("#successDiv").fadeIn();
     }
-</script>
 
+    $(document).ready(function () {
+        t = setInterval("reloadPub()", 6000);
+    })
+
+    function reloadPub() {
+        $("#pub").fadeOut();
+        setTimeout("fadeO()", 500);
+    }
+
+    function fadeO() {
+        $("#pub").load('@Url.Action("publicite", "Services")');
+        setTimeout("fadeI()", 500);
+    }
+
+    function fadeI() {
+        $("#pub").fadeIn();
+    }
+</script>
 <h2>Index</h2>
 <div id="back" style="position:absolute;display:none;background-color:rgba(0,0,0,0.8);width:100%;height:100%;top:0;left:0;z-index:999999999;" onclick="cancel();"></div>
 <div id="messageDiv" style="display:none;position:absolute;padding:0px 25px 25px 25px;margin:15%;background-color:lightgray;border:1px solid black;z-index:9999999999;">
-    <div id="successDiv"style="display:none;margin:auto;">
+    <div id="successDiv" style="display:none;margin:auto;">
         <h2>Message envoyé avec succès</h2>
         <input type="button" onclick="cancel()" value="Fermer" />
     </div>
@@ -85,7 +102,7 @@
                     @Html.Label("Sujet: ", new { style = "font-weight:bolder;" })
                 </td>
                 <td>
-                    <input type="text" id="sujet" />
+                    <input type="text" id="sujet" disabled="disabled" />
                 </td>
             </tr>
             <tr>
@@ -105,9 +122,16 @@
                 </td>
             </tr>
         </table>
-    </div> 
+    </div>
+</div>    
+<div id="pubHolder" style="margin:10px;padding:3px;">
+    <h3>Services qui pourraient vous intéresser</h3>
+    <div style="height:75px;">
+        <div id="pub">
+            @Html.Partial("~/Views/Services/publicite.cshtml")
+        </div>
+    </div>
 </div>
-
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
@@ -148,7 +172,7 @@
                 @Html.DisplayFor(modelItem => item.Offrant.Region)
             </td>
             <td>
-                <a onclick="openMessage(@item.OffrantID,@Session["UserID"],'@item.Type','@item.Label')" style="cursor:pointer;">Envoyer Message</a>
+                <a onclick="openMessage(@item.OffrantID,@Session["UserID"],'@item.Type','@item.Label',@item.ID)" style="cursor:pointer;">Envoyer Message</a>
             </td>
             @*<td>
                         @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |

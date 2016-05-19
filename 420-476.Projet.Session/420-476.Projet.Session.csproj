@@ -373,9 +373,11 @@
     <Content Include="Views\Services\MesOffres.cshtml" />
     <Content Include="Views\Shared\_MyLayout.cshtml" />
     <Content Include="Views\Messages\MyMessages.cshtml" />
+    <Content Include="Views\Services\publicite.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\Rapports\" />
     <Folder Include="Views\Navigation\" />
   </ItemGroup>
   <ItemGroup>

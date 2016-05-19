@@ -156,5 +156,43 @@ namespace _420_476.Projet.Session.Controllers
             services = NavigationController.Prep(services);
             return View(services.ToList());
         }
+
+        public ActionResult publicite()
+        {
+            return View();
+        }
+
+        public void accepterService()
+        {
+            int offrantID = -1;
+            int userID = -1;
+            int serviceID= -1;
+            foreach (string item in Request.Form)
+            {
+                switch (item)
+                {
+                    case ("offrant"):
+                        offrantID = Int32.Parse(Request["offrant"]);
+                        break;
+                    case ("user"):
+                        userID = Int32.Parse(Request["user"]);
+                        break;
+                    case ("serviceID"):
+                        serviceID = Int32.Parse(Request["serviceID"]);
+                        break;
+                }
+            }
+
+            ServicesRating serviceRating = new ServicesRating()
+            {
+                ServiceID = serviceID,
+                MembreID = userID,
+                OffrantID = offrantID,
+                Note = 0,
+                Text = ""               
+            };
+            db.ServicesRatings.Add(serviceRating);
+            db.SaveChanges();
+        }
     }
 }
