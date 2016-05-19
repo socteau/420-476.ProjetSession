@@ -1,0 +1,91 @@
+﻿html{
+    padding:0px;
+}
+body {
+        font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        padding:0px;
+        margin:0px;
+
+}
+.jumbotron{
+    /*margin-left:50px;*/
+    font-size:24px;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+.header{
+    background-color:#262626;
+    position:relative;
+    top:0;
+}
+/*.test{
+    height:100%;
+    width:100%;
+    overflow:scroll;
+    padding-right:20px;
+}*/
+li > a {
+    color:whitesmoke;
+}
+a{
+    color:black;
+    text-decoration:none;
+}
+a:hover{
+    color:#33cccc;
+}
+li{
+    list-style:none;
+    display:inline;
+    padding:9px;
+    height:100px;
+    line-height:100px;
+    vertical-align:middle;
+}
+a > img{
+    display:inline-block;
+    vertical-align:bottom;
+    margin-bottom:30px;
+    -webkit-filter: brightness(0) invert(1);
+    filter: brightness(0) invert(1);
+}
+footer > p{
+    margin-left:15px;
+}
+ul{
+    width:auto;
+    margin-top:0px;
+    padding-left:0px;
+    overflow-x:scroll;
+    white-space:nowrap;
+}
+.content{
+    width:90%;
+    position:absolute;
+    left:5%;
+}
+input{
+    padding:4px;
+    font-size:16px;
+    margin-bottom:15px;
+}
+::-webkit-scrollbar{
+    /*width:40px;*/
+    height:4px;
+}
+::-webkit-scrollbar-button{
+    width:8px;
+    height:5px;
+}
+::-webkit-scrollbar-track{
+    background:#eee;
+    border: thin solid lightgray;
+    box-shadow: 0px 0px 3px #dfdfdf inset;
+}
+::-webkit-scrollbar-thumb {
+    background:#999;
+    border: thin solid gray;
+    /*border-radius:10px;*/
+}
+::-webkit-scrollbar-thumb:hover {
+    background:#33cccc;
+}   

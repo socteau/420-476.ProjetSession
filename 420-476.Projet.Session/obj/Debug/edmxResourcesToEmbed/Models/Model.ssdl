@@ -11,6 +11,7 @@
     <Property Name="Age" Type="int" />
     <Property Name="Besoins" Type="varchar(max)" />
     <Property Name="Etat" Type="varchar" MaxLength="25" />
+    <Property Name="Photo" Type="varchar" MaxLength="75" />
   </EntityType>
   <EntityType Name="Membre">
     <Key>

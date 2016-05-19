@@ -2,6 +2,7 @@
 
 @{
     ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_MyLayout.cshtml";
 }
 
 <h2>Details</h2>
@@ -50,14 +51,29 @@
             @Html.DisplayFor(model => model.Etat)
         </dd>
 
-        <dt>
+        @*<dt>
             @Html.DisplayNameFor(model => model.Membre.FirstName)
+        </dt>*@
+
+        @*<dd>
+            @Html.DisplayFor(model => model.Membre.FirstName)
+        </dd>*@
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Photo)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Membre.FirstName)
+            @if (Html.DisplayFor(model => model.Photo).ToString().Equals(""))
+            {
+                <span>NO PICTURE</span>
+            }
+            else
+            {
+                var path = Session["UserID"] + "/" + Html.DisplayFor(model => model.Photo).ToString();
+                <img src="~/Content/Images/@path" alt="image" height="50" width="50" onerror="this.src = '~/Content/Images/not_found';" />
+            }
         </dd>
-
     </dl>
 </div>
 <p>

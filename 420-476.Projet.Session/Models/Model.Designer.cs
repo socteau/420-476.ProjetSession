@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'D:\Prog\Devoirs\420-476.Projet.Pet_Care\420-476.Projet.Session\Models\Model.edmx'. 
+﻿// T4 code generation is enabled for model 'C:\Users\mark_\OneDrive\Documents\420-476.ProjetSession\420-476.Projet.Session\Models\Model.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

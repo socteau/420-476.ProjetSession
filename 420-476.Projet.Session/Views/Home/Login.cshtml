@@ -1,9 +1,11 @@
 ﻿
 @{
     ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_MyLayout.cshtml";
+
 }
 
-<h2>Login</h2>
+<h1>Login</h1>
 @Html.Label(ViewBag.errorMessage!=null ? (String)ViewBag.errorMessage : "", new { style="color:red;"})
 @using(Html.BeginForm("LoginIn","Home",FormMethod.Post))
 {
@@ -14,4 +16,3 @@
 <label>Se souvenir de moi.</label><br />
 <input id="Submit1" type="submit" value="submit" />
 }
-@Html.ActionLink("Creer un compte","Create","Users")

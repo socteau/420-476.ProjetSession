@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using _420_476.Projet.Session.Models;
+using System.IO;
 
 namespace _420_476.Projet.Session.Controllers
 {
@@ -55,10 +56,28 @@ namespace _420_476.Projet.Session.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,MembreID,Nom,Race,Age,Besoins,Etat")] Animal animal)
+        public ActionResult Create([Bind(Include = "ID,MembreID,Nom,Race,Age,Besoins,Etat,Photo")] Animal animal)
         {
             animal.ID = db.Animals.Count() + 1;
             animal.MembreID = int.Parse(Session["UserID"].ToString());
+            //Upload
+            if (Request.Files.Count > 0)
+            {
+                var file = Request.Files[0];
+                if (file != null && file.ContentLength > 0)
+                {
+                    var fileName = Path.GetFileName(file.FileName);
+                    var fileExtension = Path.GetExtension(file.FileName);
+                    var userPath = "~/Content/Images/" + Session["UserID"].ToString();
+                    if (!Directory.Exists(Server.MapPath(userPath)))
+                        Directory.CreateDirectory(Server.MapPath(userPath));
+                    var path = Path.Combine(Server.MapPath(userPath), fileName);
+                    if (!System.IO.File.Exists(path))
+                        file.SaveAs(path);
+                    animal.Photo = fileName;
+                }
+            }
+            //END
             if (ModelState.IsValid)
             {
                 db.Animals.Add(animal);
@@ -91,8 +110,12 @@ namespace _420_476.Projet.Session.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,MembreID,Nom,Race,Age,Besoins,Etat")] Animal animal)
+        public ActionResult Edit([Bind(Include = "ID,MembreID,Nom,Race,Age,Besoins,Etat,Photo")] Animal animal)
         {
+            animal.MembreID = int.Parse(Session["UserID"].ToString());
+            if (animal.Photo == null)
+                animal.Photo = db.Animals.AsNoTracking().Where(x => x.ID == animal.ID).FirstOrDefault().Photo;
+            int test = 42;
             if (ModelState.IsValid)
             {
                 db.Entry(animal).State = EntityState.Modified;

@@ -6,7 +6,8 @@
     <title>@ViewBag.Title - My ASP.NET Application</title>
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
-    @Scripts.Render("~/bundles/modernizr")
+        @Scripts.Render("~/bundles/modernizr")
+        <link href="~/Content/MyCSS.css" rel="stylesheet" />
     <script src="http://cdn.jsdelivr.net/jquery.validation/1.15.0/jquery.validate.min.js"></script>
     <script src="http://cdn.jsdelivr.net/jquery.validation/1.15.0/additional-methods.min.js"></script>
     <script type="text/javascript">
@@ -23,17 +24,25 @@
 </head>
 <body>
     <div>
-        <div>
-            <div>
-                <button>
+        <div class="header">
+            @*<div>
+                @*<button>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div>
+                </button>*@
+                @*<a href="/">
+                    <img src="~/Content/images/6TpLAg87c.png" alt="Pet-Care" width="50" height="50" />
+                </a>*@
+                @*@Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })*@
+            @*</div>*@
+            <div class="test">
                 <ul>
+                    <li>
+                        <a href="/">
+                            <img src="~/Content/images/6TpLAg87c.png" alt="Pet-Care" width="50" height="50"/>
+                        </a>
+                    </li>
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
                     <li>@Html.ActionLink("Contactez nous", "Contact", "Home")</li>
                     @if (Session["userRole"] != null)
@@ -65,7 +74,7 @@
                                 @Html.ActionLink("Faire une plainte", "Plainte", "Messages")
                             </li>
                             <li>
-                                @Html.ActionLink("Rate un service", "Create", "ServicesRatings")
+                                @Html.ActionLink("Rate un service", "Index", "ServicesRatings")
                             </li>
                         }
                         if (Session["userRole"].Equals("Offrant"))
@@ -112,7 +121,7 @@
             </div>
         </div>
     </div>
-    <div>
+    <div class="content">
         @RenderBody()
         <hr />
         <footer>
