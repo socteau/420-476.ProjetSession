@@ -17,7 +17,8 @@ namespace _420_476.Projet.Session.Controllers
         // GET: ServicesRatings
         public ActionResult Index()
         {
-            var servicesRatings = db.ServicesRatings.Include(s => s.Membre).Include(s => s.Offrant).Include(s => s.Service);
+            int id = int.Parse(Session["UserID"].ToString());
+            var servicesRatings = db.ServicesRatings.Include(s => s.Membre).Include(s => s.Offrant).Include(s => s.Service).Where(x => x.MembreID == id);
             return View(servicesRatings.ToList());
         }
 
@@ -90,8 +91,15 @@ namespace _420_476.Projet.Session.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "ID,ServiceID,MembreID,OffrantID,Note,Text")] ServicesRating servicesRating)
         {
+            int id = db.ServicesRatings.AsNoTracking().Where(x => x.ID == servicesRating.ID).FirstOrDefault().OffrantID;
+            Offrant offrant = db.Offrants.AsNoTracking().Where(x => x.MembreID == id).FirstOrDefault();
+            if (servicesRating.Note != null)
+            {
+                offrant.AverageRating = (offrant.AverageRating + servicesRating.Note ?? 0) / 2;
+            }
             if (ModelState.IsValid)
             {
+                db.Entry(offrant).State = EntityState.Modified;
                 db.Entry(servicesRating).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");

@@ -2,17 +2,18 @@
 
 @{
     ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_MyLayout.cshtml";
 }
 
 <h2>Index</h2>
 
-<p>
+@*<p>
     @Html.ActionLink("Create New", "Create")
-</p>
-<div>
+</p>*@
+@*<div>
     @Html.ActionLink("Precedent", "Previous", "Navigation")
     @Html.ActionLink("Suivant", "Next", "Navigation")
-</div>
+</div>*@
 <table class="table">
     <tr>
         <th>
@@ -33,6 +34,9 @@
         @*<th>
             @Html.DisplayNameFor(model => model.Membre.FirstName)
         </th>*@
+        <th>
+            @Html.DisplayNameFor(model => model.Photo)
+        </th>
         <th></th>
     </tr>
 
@@ -56,6 +60,18 @@
         @*<td>
             @Html.DisplayFor(modelItem => item.Membre.FirstName)
         </td>*@
+        <td>
+            @if (Html.DisplayFor(modelItem => item.Photo).ToString().Equals(""))
+            {
+                <span>NO PICTURE</span>
+            }
+            else
+            {
+                var path = Session["UserID"] + "/" + item.Photo;
+                <img src="~/Content/Images/@path" alt="image" height="50" width="50" onerror="this.src = '~/Content/Images/not_found';" />
+            }
+            @*@Html.DisplayFor(modelItem => item.Photo)*@
+        </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
             @Html.ActionLink("Details", "Details", new { id=item.ID }) @*|

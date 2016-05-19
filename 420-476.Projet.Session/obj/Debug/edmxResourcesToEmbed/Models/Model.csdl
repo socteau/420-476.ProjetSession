@@ -12,6 +12,7 @@
     <Property Name="Besoins" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
     <Property Name="Etat" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="Membre" Relationship="Self.FK_Animal_Membre" FromRole="Animal" ToRole="Membre" />
+    <Property Name="Photo" Type="String" MaxLength="75" FixedLength="false" Unicode="false" />
   </EntityType>
   <EntityType Name="Membre">
     <Key>

@@ -4,6 +4,7 @@
     <EntitySetMapping Name="Animals">
       <EntityTypeMapping TypeName="Model.Animal">
         <MappingFragment StoreEntitySet="Animal">
+          <ScalarProperty Name="Photo" ColumnName="Photo" />
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="MembreID" ColumnName="MembreID" />
           <ScalarProperty Name="Nom" ColumnName="Nom" />

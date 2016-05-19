@@ -11,7 +11,7 @@ namespace _420_476.Projet.Session.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
+    
     public partial class User
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -26,8 +26,6 @@ namespace _420_476.Projet.Session.Models
         public string Login { get; set; }
         public bool Statut_disponible { get; set; }
         public string Email { get; set; }
-
-        [DataType(DataType.Password)]
         public string Password { get; set; }
     
         public virtual Membre Membre { get; set; }
