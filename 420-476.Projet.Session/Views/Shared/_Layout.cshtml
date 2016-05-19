@@ -6,7 +6,7 @@
     <title>@ViewBag.Title - My ASP.NET Application</title>
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
-    @Styles.Render("~/Content/css")    
+    @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
     <script src="http://cdn.jsdelivr.net/jquery.validation/1.15.0/jquery.validate.min.js"></script>
     <script src="http://cdn.jsdelivr.net/jquery.validation/1.15.0/additional-methods.min.js"></script>
@@ -39,7 +39,6 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("Contactez nous", "Contact", "Home")</li>
                     @if (Session["userRole"] != null)
                     {
                         <li>
@@ -60,6 +59,9 @@
                             }
                             <li>
                                 @Html.ActionLink("Consulter les offres", "Index", "Services")
+                            </li>
+                            <li>
+                                @Html.ActionLink("Mes Messages", "MyMessages", "Messages");
                             </li>
                             <li>
                                 @Html.ActionLink("Ajouter un animal", "Create", "Animals")
@@ -114,6 +116,7 @@
                             @Html.ActionLink("Créer un compte", "Create", "Users")
                         </li>
                     }
+                    <li>@Html.ActionLink("Contactez nous", "Contact", "Home")</li>
                 </ul>
             </div>
         </div>

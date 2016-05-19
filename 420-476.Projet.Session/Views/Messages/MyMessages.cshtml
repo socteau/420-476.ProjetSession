@@ -1,0 +1,56 @@
+﻿@model IEnumerable<_420_476.Projet.Session.Models.Message>
+
+@{
+    ViewBag.Title = "Mes Messages";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Mes Messages</h2>
+
+@*<p>
+        @Html.ActionLink("Create New", "Create")
+    </p>*@
+@*<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Sujet)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateEnvoie)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.User.Login)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.User1.Login)
+        </th>
+        <th></th>
+    </tr>*@
+
+@foreach (var item in Model)
+{
+    <ul>
+        <li>
+            @if (Html.DisplayFor(modelItem => item.Statut_lu).ToString().Equals("<input checked=\"checked\" class=\"check-box\" disabled=\"disabled\" type=\"checkbox\" />"))
+            { <img src="../Content/Images/OpenedEnvelope.png" width="25px" height="25px" />}
+            else
+            { <img src="../Content/Images/ClosedEnvelope.png" width="25px" height="25px" /> }
+            <strong>@Html.DisplayFor(modelItem => item.Sujet)</strong><br />
+            <table style="width:100%;">
+                <tr>
+                    <th>Date</th>
+                    <th>Envoyé par</th>
+                    <th></th>
+                </tr>
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => item.DateEnvoie)</td>
+                    <td>@Html.DisplayFor(modelItem => item.User.Login)</td>
+                    <td style="float:right;">@Html.ActionLink("Details", "Details", new { id = item.ID })</td>
+                </tr>
+            </table>
+        </li>
+    </ul>
+}
+
+
+@*</table>*@

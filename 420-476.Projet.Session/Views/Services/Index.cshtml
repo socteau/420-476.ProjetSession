@@ -50,6 +50,7 @@
 
     function cancel() {
         $("#messageDiv").fadeOut();
+        $("#successDiv").fadeOut();
         $("#back").fadeOut();
         $("#table").fadeOut();
     }
@@ -111,8 +112,8 @@
     @Html.ActionLink("Create New", "Create")
 </p>
 <div>
-    @Html.ActionLink("Precedent", "PreviousServices", "Navigation");
-    @Html.ActionLink("Suivant", "NextServices", "Navigation");
+    @Html.ActionLink("Precedent", "PreviousServices", "Navigation")
+    @Html.ActionLink("Suivant", "NextServices", "Navigation")
 </div>
 <table class="table">
     <tr>
